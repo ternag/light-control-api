@@ -1,0 +1,25 @@
+@host = https://rasp3:5001
+@api = {{host}}/api
+
+GET {{host}}/
+
+###
+
+GET {{api}}/led
+
+###
+
+GET {{api}}/led/2
+
+### Update value
+GET {{api}}/led/2/_flick
+
+### Update display name
+PUT {{host}}/led/2
+
+{
+  "display": "Top floor"
+}
+
+### bank and port
+GET {{host}}/leds/bank/4/led/0
