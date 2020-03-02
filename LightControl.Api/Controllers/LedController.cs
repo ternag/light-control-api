@@ -15,11 +15,13 @@ namespace LightControl.Api.Controllers
     {
         private readonly ILogger<LedController> _logger;
         private readonly ILedContext _ledContext;
+        private readonly IHal _hal;
 
-        public LedController(ILedContext ledContext, ILogger<LedController> logger)
+        public LedController(ILedContext ledContext, ILogger<LedController> logger, IHal hal)
         {
             _logger = logger;
             _ledContext = ledContext;
+            _hal = hal;
         }
 
         [HttpGet]
@@ -44,7 +46,14 @@ namespace LightControl.Api.Controllers
         {
             _logger.LogInformation($"Flicking LED {id}");
 
-            return CatchExceptions<Led>(() => _ledContext.Flick(id));
+            return CatchExceptions<Led>(() => FlickAndUpdate(id));
+        }
+
+        private Led FlickAndUpdate(int id)
+        {
+            var led = _ledContext.Flick(id);
+            _hal.Update(led);
+            return led;
         }
 
         private ActionResult<T> CatchExceptions<T>(Func<T> method)

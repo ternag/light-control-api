@@ -29,6 +29,7 @@ namespace LightControl.Api
             services.AddControllers();
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddSingleton<ILedContext, LedContext>();
+            services.AddSingleton(typeof(IHal), new Hal());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

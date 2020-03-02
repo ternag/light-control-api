@@ -12,7 +12,21 @@ GET {{api}}/led
 GET {{api}}/led/2
 
 ### Update value
+GET {{api}}/led/0/_flick
+###
+GET {{api}}/led/1/_flick
+###
 GET {{api}}/led/2/_flick
+###
+GET {{api}}/led/3/_flick
+###
+GET {{api}}/led/4/_flick
+###
+GET {{api}}/led/5/_flick
+###
+GET {{api}}/led/6/_flick
+###
+GET {{api}}/led/7/_flick
 
 ### Update display name
 PUT {{host}}/led/2
