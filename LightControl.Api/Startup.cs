@@ -30,6 +30,16 @@ namespace LightControl.Api
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddSingleton<ILedContext, LedContext>();
             services.AddSingleton(typeof(IHal), new Hal());
+            services.AddCors(options =>
+                {
+                    options.AddDefaultPolicy(
+                        builder =>
+                        {                     
+                            builder.WithOrigins("http://tardis:3000")
+                                                .AllowAnyHeader()
+                                                .AllowAnyMethod();
+                        });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +53,8 @@ namespace LightControl.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
