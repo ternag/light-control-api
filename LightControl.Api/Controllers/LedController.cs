@@ -40,17 +40,18 @@ namespace LightControl.Api.Controllers
             return CatchExceptions<Led>(() => _ledContext.Get(id));
         }
 
-        // [HttpPut]
-        // [Route("{id}")]
-        // public ActionResult<Led> Put(int id, string display)
-        // {
-        //     _logger.LogInformation($"Updating LED {id}, display={display}");
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult<Led> Put(int id, string display)
+        {
+            _logger.LogInformation($"Updating LED {id}, display={display}");
 
-        //     return CatchExceptions<Led>(() => {
-        //             Led knownLed = _ledContext.Get(id);
-        //             knownLed.Display = display;
-        //         });
-        // }
+            return CatchExceptions<Led>(() => {
+                    Led knownLed = _ledContext.Get(id);
+                    knownLed.Display = display;
+                    return knownLed;
+                });
+        }
 
         [HttpGet]
         [Route("{id}/_flick")]

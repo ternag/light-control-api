@@ -1,23 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Device.Gpio;
 using LightControl.Api.Models;
+using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure 
+namespace LightControl.Api.Infrastructure
 {
-  public interface IHal 
-  {
-    void Update(Led led);
-  }
-
-  public class Hal : IHal
+  public class RaspberryPiGpioHAL : IHal
   {
     GpioController _gpio;
     HardwareConfiguration _hardwareConfiguration;
+    private readonly ILogger<RaspberryPiGpioHAL> _logger;
 
-    public Hal()
+    public RaspberryPiGpioHAL(ILogger<RaspberryPiGpioHAL> logger)
     {
+      _logger = logger;
       _gpio = new GpioController();
       _hardwareConfiguration = new HardwareConfiguration();
       Init();

@@ -1,4 +1,5 @@
-@host = https://rasp3:5001
+//@host = https://rasp3:5001
+@host = https://localhost:5001
 @api = {{host}}/api
 
 GET {{host}}/

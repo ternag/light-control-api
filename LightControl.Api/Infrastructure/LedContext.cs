@@ -14,16 +14,16 @@ namespace LightControl.Api.Infrastructure
     public LedContext(ILogger<LedContext> logger)
     {
       _logger = logger;
-        _leds = new List<Led> {
-          new Led(0, "Nr. 1", LedState.Off),
-          new Led(1, "Nr. 2", LedState.Off),
-          new Led(2, "Nr. 3", LedState.Off),
-          new Led(3, "Nr. 4", LedState.Off),
-          new Led(4, "Nr. 5", LedState.Off),
-          new Led(5, "Nr. 6", LedState.Off),
-          new Led(6, "Nr. 7", LedState.Off),
-          new Led(7, "Nr. 8", LedState.Off),
-        };
+      _leds = new List<Led> {
+        new Led(0, "Nr. 1", LedState.Off),
+        new Led(1, "Nr. 2", LedState.Off),
+        new Led(2, "Nr. 3", LedState.Off),
+        new Led(3, "Nr. 4", LedState.Off),
+        new Led(4, "Nr. 5", LedState.Off),
+        new Led(5, "Nr. 6", LedState.Off),
+        new Led(6, "Nr. 7", LedState.Off),
+        new Led(7, "Nr. 8", LedState.Off),
+      };
     }
 
     public IEnumerable<Led> All => _leds;

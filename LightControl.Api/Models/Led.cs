@@ -11,7 +11,7 @@ namespace LightControl.Api.Models
       }
 
       public int Id { get; }
-      public string Display { get; }
+      public string Display { get; set; }
       public LedState State { get; private set; }
 
       public void Flick()
