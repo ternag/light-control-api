@@ -30,11 +30,15 @@ GET {{api}}/led/6/_flick
 GET {{api}}/led/7/_flick
 
 ### Update display name
-PUT {{host}}/led/2
+PUT {{api}}/led/2
+Content-Type: application/json
 
 {
-  "display": "Top floor"
+  "foo": "Bla - totally ignored property",
+  "display": "Yo dude",
+  "other": "Bla - totally ignored property"
 }
 
+### TODO:
 ### bank and port
-GET {{host}}/leds/bank/4/led/0
+GET {{api}}/leds/bank/4/led/0

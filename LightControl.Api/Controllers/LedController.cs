@@ -42,13 +42,13 @@ namespace LightControl.Api.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult<Led> Put(int id, string display)
+        public ActionResult<Led> Put(int id, [FromBody]LedUpdateDisplay newDisplayValue)
         {
-            _logger.LogInformation($"Updating LED {id}, display={display}");
+            _logger.LogInformation($"Updating LED {id}, display={newDisplayValue.Display}");
 
             return CatchExceptions<Led>(() => {
                     Led knownLed = _ledContext.Get(id);
-                    knownLed.Display = display;
+                    knownLed.Display = newDisplayValue.Display;
                     return knownLed;
                 });
         }
