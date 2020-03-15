@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -44,17 +45,6 @@ namespace LightControl.Api
           return new RaspberryPiGpioHAL(logger);
         });
       }
-      
-      services.AddCors(options =>
-          {
-            options.AddDefaultPolicy(
-                      builder =>
-                      {
-                    builder.WithOrigins("http://tardis:3000")
-                                              .AllowAnyHeader()
-                                              .AllowAnyMethod();
-                  });
-          });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,13 +55,16 @@ namespace LightControl.Api
         app.UseDeveloperExceptionPage();
       }
 
-      app.UseHttpsRedirection();
+      //app.UseHttpsRedirection();
 
       app.UseRouting();
 
-      app.UseCors();
+      app.UseForwardedHeaders(new ForwardedHeadersOptions
+      {
+          ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+      });
 
-      app.UseAuthorization();
+      //app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
