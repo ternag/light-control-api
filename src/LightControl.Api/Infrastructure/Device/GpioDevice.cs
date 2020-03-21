@@ -1,4 +1,5 @@
 using System.Device.Gpio;
+using LightControl.Api.Hardware;
 
 namespace LightControl.Api.Infrastructure.Device
 {
@@ -11,9 +12,9 @@ namespace LightControl.Api.Infrastructure.Device
       _gpio = new GpioController();
     }
 
-    public void Write(int pin, PinValue value)
+    public void Write(PinNumber pin, PinValue value)
     {
-      _gpio.Write(pin, value);
+      _gpio.Write((int)pin, value);
     }
   }
 }

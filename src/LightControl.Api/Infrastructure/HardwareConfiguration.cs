@@ -5,6 +5,7 @@ using System.Device.Gpio;
 using LightControl.Api.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using LightControl.Api.Hardware;
 
 namespace LightControl.Api.Infrastructure
 {
@@ -61,21 +62,21 @@ namespace LightControl.Api.Infrastructure
     }
 
     private ReadOnlyDictionary<int, IDevice> Devices {get;}
-    private ReadOnlyDictionary<int, int> Pins {get;}
+    private ReadOnlyDictionary<int, PinNumber> Pins {get;}
 
     public IEnumerable<LED> LEDs { get; }
     
-    public IDevice GetDevice(ushort id)
+    public IDevice GetDevice(PinNumber id)
     {
       throw new NotImplementedException();
     }
 
-    public int GetPin(int id)
+    public PinNumber GetPin(int id)
     {
       var led = LEDs.SingleOrDefault(x => x.Id == id);
 
       if(led == null)
-        return -1;
+        throw new ArgumentException($"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware sonfiguration");
 
       return led.Pin;
     }

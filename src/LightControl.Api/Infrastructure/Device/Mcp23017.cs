@@ -1,5 +1,6 @@
 using System;
 using System.Device.Gpio;
+using LightControl.Api.Hardware;
 
 namespace LightControl.Api.Infrastructure.Device
 {
@@ -18,7 +19,7 @@ namespace LightControl.Api.Infrastructure.Device
         //public byte PortA { get; set; }
         //public byte PortB { get; set; }
 
-        public void Write(int pin, PinValue value)
+        public void Write(PinNumber pin, PinValue value)
         {
 
         }

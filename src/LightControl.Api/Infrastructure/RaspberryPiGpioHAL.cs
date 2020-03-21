@@ -29,8 +29,8 @@ namespace LightControl.Api.Infrastructure
 
     public void Update(Led led)
     {
-      int pin = _hardwareConfiguration.GetPin(led.Id);
-      _gpio.Write(pin, led.State.ToPinValue());
+      var pin = _hardwareConfiguration.GetPin(led.Id);
+      _gpio.Write((int)pin, led.State.ToPinValue());
     }
   }
 }
