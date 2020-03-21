@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Device.Gpio;
 using LightControl.Api.Models;
+using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 
-namespace LightControl.Api.Infrastructure 
+namespace LightControl.Api.Infrastructure
 {
   public class HardwareConfiguration 
   {
@@ -58,9 +60,12 @@ namespace LightControl.Api.Infrastructure
       
     }
 
+    private ReadOnlyDictionary<int, IDevice> Devices {get;}
+    private ReadOnlyDictionary<int, int> Pins {get;}
+
     public IEnumerable<LED> LEDs { get; }
     
-    public IDevice GetDevice(int id)
+    public IDevice GetDevice(ushort id)
     {
       throw new NotImplementedException();
     }
