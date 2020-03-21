@@ -1,19 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Device.Gpio;
-using LightControl.Api.Models;
-using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
-using LightControl.Api.Hardware;
-using LightControl.Api.Infrastructure.Device;
+using LightControl.Api.Hardware.Device;
+using LightControl.Api.Infrastructure;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure
+namespace LightControl.Api.Hardware
 {
   public class HardwareConfiguration 
   {
-
     // {
     //   "gpio": {
     //     "deviceType": "gpio",
@@ -49,17 +43,7 @@ namespace LightControl.Api.Infrastructure
     // }
     public HardwareConfiguration(ILogger logger)
     {
-      // TODO: Inject via constructor
-      LEDs = new List<LED> { 
-        new LED(0,4), 
-        new LED(1,17), 
-        new LED(2,27),
-        new LED(3,22),
-        new LED(4,5),
-        new LED(5,6),
-        new LED(6,13),
-        new LED(7,19)
-      };
+      // TODO: Inject hardware configuration via constructor
       Init(logger);
     }
 

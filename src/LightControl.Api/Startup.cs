@@ -1,3 +1,4 @@
+using LightControl.Api.Hardware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;

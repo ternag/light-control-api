@@ -1,8 +1,8 @@
-using LightControl.Api.Hardware;
+using LightControl.Api.Infrastructure;
 using LightControl.Api.Models;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure
+namespace LightControl.Api.Hardware
 {
   public class NoHardwareHAL : IHal
   {

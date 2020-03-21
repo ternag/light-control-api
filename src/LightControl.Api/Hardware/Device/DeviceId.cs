@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace LightControl.Api.Infrastructure.Device
+namespace LightControl.Api.Hardware.Device
 {
     public class DeviceId
     {
         public DeviceId(int id)
         {
-            if (id < 0x20 || id > 0x27) throw new ArgumentException("id range is [0x20 .. 0x27]");
+            if (id < 0x20 || id > 0x27) throw new ArgumentException("DeviceId range is [0x20 .. 0x27]");
             Value = id;
         }
 

@@ -1,8 +1,8 @@
 ﻿using System.Device.Gpio;
-using LightControl.Api.Hardware;
+using LightControl.Api.Infrastructure;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure.Device
+namespace LightControl.Api.Hardware.Device
 {
   public class NoHardwareDevice : IDevice
   {

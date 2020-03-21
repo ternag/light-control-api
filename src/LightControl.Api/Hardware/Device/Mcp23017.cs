@@ -1,7 +1,7 @@
 using System.Device.Gpio;
-using LightControl.Api.Hardware;
+using LightControl.Api.Infrastructure;
 
-namespace LightControl.Api.Infrastructure.Device
+namespace LightControl.Api.Hardware.Device
 {
   public class Mcp23017 : IDevice
     {
