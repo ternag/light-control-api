@@ -42,8 +42,8 @@ namespace LightControl.Api
       {
         services.AddSingleton<IHal>((container) =>
         {
-          var logger = container.GetRequiredService<ILogger<RaspberryPiHAL>>();
-          return new RaspberryPiHAL(logger);
+          var logger = container.GetRequiredService<ILogger<Hal>>();
+          return new Hal(logger);
         });
       }
     }

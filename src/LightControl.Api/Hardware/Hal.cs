@@ -4,12 +4,12 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware
 {
-  public class RaspberryPiHAL : IHal
+  public class Hal : IHal
   {
-    private readonly ILogger<RaspberryPiHAL> _logger;
+    private readonly ILogger<Hal> _logger;
     private HardwareConfiguration _hw;
 
-    public RaspberryPiHAL(ILogger<RaspberryPiHAL> logger)
+    public Hal(ILogger<Hal> logger)
     {
       _logger = logger;
       _hw = new HardwareConfiguration(_logger);
