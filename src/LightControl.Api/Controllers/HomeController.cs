@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using LightControl.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -19,9 +16,9 @@ namespace LightControl.Api.Controllers
         }
 
         [HttpGet]
-        public string Get()
+        public ActionResult<Info> Get()
         {
-            return "Hello World of Lights";
+            return new Info();
         }
     }
 }
