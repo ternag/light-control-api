@@ -8,10 +8,11 @@ namespace LightControl.Api.Hardware
     {
       _value = value;
     }
+
     private readonly ushort _value;
 
-    public static implicit operator PinNumber(ushort value) => value;
-    public static implicit operator PinNumber(int value) => Convert.ToUInt16(value);
+    public static implicit operator PinNumber(ushort value) => new PinNumber(value);
+    public static implicit operator PinNumber(int value) => new PinNumber(Convert.ToUInt16(value));
     public static explicit operator ushort(PinNumber value) => value._value;
     public static explicit operator int(PinNumber value) => value._value;
 
