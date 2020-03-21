@@ -6,5 +6,6 @@ namespace LightControl.Api.Infrastructure
   public interface IDevice 
   {
     void Write(PinNumber pin, PinValue value);
+    string Name { get;  }
   }
 }

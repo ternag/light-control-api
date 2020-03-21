@@ -14,7 +14,7 @@ namespace LightControl.Api.Infrastructure
     {
       _logger = logger;
       _gpio = new GpioController();
-      _hardwareConfiguration = new HardwareConfiguration();
+      _hardwareConfiguration = new HardwareConfiguration(_logger);
       Init();
     }
 

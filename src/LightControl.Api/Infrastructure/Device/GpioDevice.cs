@@ -16,5 +16,7 @@ namespace LightControl.Api.Infrastructure.Device
     {
       _gpio.Write((int)pin, value);
     }
+
+    public string Name => "Gpio";
   }
 }
