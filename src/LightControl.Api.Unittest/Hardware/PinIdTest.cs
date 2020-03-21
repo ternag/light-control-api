@@ -6,32 +6,32 @@ using FluentAssertions;
 
 namespace LightControl.Api.Unittest
 {
-  public class PinNumberTest
+  public class PinIdTest
   {
     [Theory]
     [InlineData(0)]
     [InlineData(42)]
     [InlineData(65535)]
-    public void GivenValidInput_CanCreate(int pinNumber)
+    public void GivenValidInput_CanCreate(int pinId)
     {
-      PinNumber sut = pinNumber;
-      Assert.Equal(sut, pinNumber);
+      PinId sut = pinId;
+      Assert.Equal(sut, pinId);
     }
 
     [Fact]
     public void ImplementsEqualEqualOperator()
     {
-      PinNumber a = 123;
+      PinId a = 123;
       Assert.True(a == 123);
     }
 
     [Theory]
     [InlineData(-1)]
     [InlineData(65536)]
-    public void GivenInvalidInput_CannotCreate(int invalidPinNumber)
+    public void GivenInvalidInput_CannotCreate(int invalidPinId)
     {
-        PinNumber sut;
-        Action act = () => sut = invalidPinNumber;
+        PinId sut;
+        Action act = () => sut = invalidPinId;
         act.Should().Throw<Exception>();
     }
   }
