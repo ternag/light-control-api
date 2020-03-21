@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightControl.Api", "LightControl.Api\LightControl.Api.csproj", "{88A03583-CE2E-40CC-BD2F-25E29833840E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightControl.Api.Test", "LightControl.Api.Unittest\LightControl.Api.Test.csproj", "{56BA0601-9EA0-4F61-8E55-564876BD3046}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightControl.Api.Unittest", "LightControl.Api.Unittest\LightControl.Api.Unittest.csproj", "{56BA0601-9EA0-4F61-8E55-564876BD3046}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
