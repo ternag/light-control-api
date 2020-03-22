@@ -4,14 +4,14 @@ namespace LightControl.Api.Models
   public class Led
   {
 
-    public Led(int id, string display, LedState state)
+    public Led(LedId id, string display, LedState state)
     {
       Id = id;
       Display = display;
       State = state;
     }
 
-    public int Id { get; }
+    public LedId Id { get; }
     public string Display { get; set; }
     public LedState State { get; private set; }
 

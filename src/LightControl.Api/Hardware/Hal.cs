@@ -6,19 +6,17 @@ namespace LightControl.Api.Hardware
 {
   public class Hal : IHal
   {
-    private readonly ILogger<Hal> _logger;
-    private HardwareConfiguration _hw;
+    private readonly IHardwareConfiguration _hardwareConfiguration;
 
-    public Hal(ILogger<Hal> logger)
+    public Hal(IHardwareConfiguration hardwareConfiguration)
     {
-      _logger = logger;
-      _hw = new HardwareConfiguration(_logger);
+      _hardwareConfiguration = hardwareConfiguration;
     }
 
     public void Update(Led led)
     {
-      IDevice device = _hw.GetDevice(led.Id);
-      var pin = _hw.GetPin(led.Id);
+      IDevice device = _hardwareConfiguration.GetDevice(led.Id);
+      var pin = _hardwareConfiguration.GetPin(led.Id);
       device.Write(pin, led.State.ToPinValue());
     }
   }

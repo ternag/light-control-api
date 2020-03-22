@@ -7,7 +7,7 @@ namespace LightControl.Api.Infrastructure
 {
   public interface ILedContext {
     IEnumerable<Led> All { get; }
-    Led Get(int id);
+    Led Get(int ledId);
     Led Flick(int id);
   }
 }

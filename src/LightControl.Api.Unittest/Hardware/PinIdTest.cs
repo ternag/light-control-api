@@ -3,6 +3,7 @@ using Xunit;
 using Xunit.Abstractions;
 using LightControl.Api.Hardware;
 using FluentAssertions;
+using LightControl.Api.Models;
 
 namespace LightControl.Api.Unittest
 {
@@ -14,14 +15,14 @@ namespace LightControl.Api.Unittest
     [InlineData(65535)]
     public void GivenValidInput_CanCreate(int pinId)
     {
-      PinId sut = pinId;
+      LedId sut = pinId;
       Assert.Equal(sut, pinId);
     }
 
     [Fact]
     public void ImplementsEqualEqualOperator()
     {
-      PinId a = 123;
+      LedId a = 123;
       Assert.True(a == 123);
     }
 
@@ -30,7 +31,7 @@ namespace LightControl.Api.Unittest
     [InlineData(65536)]
     public void GivenInvalidInput_CannotCreate(int invalidPinId)
     {
-        PinId sut;
+        LedId sut;
         Action act = () => sut = invalidPinId;
         act.Should().Throw<Exception>();
     }

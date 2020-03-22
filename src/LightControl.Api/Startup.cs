@@ -32,18 +32,22 @@ namespace LightControl.Api
       // Registre Hardware Abstraction Layer dependent on environment
       if (_env.IsDevelopment())
       {
+        services.AddSingleton<IHardwareConfigurationFactory, NoHardwareConfigurationFactory>();
         services.AddSingleton<IHal>((container) =>
         {
-          var logger = container.GetRequiredService<ILogger<NoHardwareHAL>>();
-          return new NoHardwareHAL(logger);
+          var logger = container.GetRequiredService<ILogger<HardwareConfiguration>>();
+          var hcf = new NoHardwareConfigurationFactory(logger);
+          return new Hal(hcf.Create());
         });
       }
       else
       {
+        services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
         services.AddSingleton<IHal>((container) =>
         {
-          var logger = container.GetRequiredService<ILogger<Hal>>();
-          return new Hal(logger);
+          var logger = container.GetRequiredService<ILogger<HardwareConfiguration>>();
+          var hcf = new HardwareConfigurationFactory(logger);
+          return new Hal(hcf.Create());
         });
       }
     }
