@@ -1,11 +1,9 @@
 using System;
-using Xunit;
-using Xunit.Abstractions;
-using LightControl.Api.Hardware;
 using FluentAssertions;
 using LightControl.Api.Models;
+using Xunit;
 
-namespace LightControl.Api.Unittest
+namespace LightControl.Api.UnitTest.Hardware
 {
   public class PinIdTest
   {

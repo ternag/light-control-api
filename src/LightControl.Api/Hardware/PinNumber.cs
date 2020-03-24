@@ -18,6 +18,11 @@ namespace LightControl.Api.Hardware
 
     public static bool operator ==(PinNumber a, PinNumber b) => a.Equals(b);
     public static bool operator !=(PinNumber a, PinNumber b) => !a.Equals(b);
+    public static bool operator >(PinNumber a, PinNumber b) => a._value > b._value;
+    public static bool operator <(PinNumber a, PinNumber b) => a._value < b._value;
+    public static bool operator >=(PinNumber a, PinNumber b) => a._value >= b._value;
+    public static bool operator <=(PinNumber a, PinNumber b) => a._value <= b._value;
+
 
     public bool Equals(PinNumber other) => other._value == _value;
     public override bool Equals(object obj)
