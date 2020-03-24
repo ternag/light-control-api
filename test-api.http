@@ -8,6 +8,7 @@ GET {{host}}/
 
 GET {{api}}/led
 
+
 ###
 
 GET {{api}}/led/2
@@ -27,7 +28,7 @@ GET {{api}}/led/5/_flick
 ###
 GET {{api}}/led/6/_flick
 ###
-GET {{api}}/led/7/_flick
+GET {{api}}/led/12/_flick
 
 ### Update display name
 PUT {{api}}/led/2
