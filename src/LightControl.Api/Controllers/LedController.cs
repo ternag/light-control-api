@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,44 +26,44 @@ namespace LightControl.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Led>> Get()
+        public ActionResult<IEnumerable<LedDto>> Get()
         {
-            return CatchExceptions<IEnumerable<Led>>(() => _ledContext.All);
+            return CatchExceptions(() => _ledContext.All.Select(l => l.ToDto()));
         }
 
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Led> Get(int id)
+        public ActionResult<LedDto> Get(ushort id)
         {
             _logger.LogInformation($"Getting LED {id}");
-
-            return CatchExceptions<Led>(() => _ledContext.Get(id));
+            // TODO: Create dto for the Led class
+            return CatchExceptions(() => _ledContext.Get(id).ToDto());
         }
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult<Led> Put(int id, [FromBody]LedUpdateDisplay newDisplayValue)
+        public ActionResult<LedDto> Put(ushort id, [FromBody]LedUpdateDisplay newDisplayValue)
         {
             _logger.LogInformation($"Updating LED {id}, display={newDisplayValue.Display}");
 
-            return CatchExceptions<Led>(() => {
+            return CatchExceptions(() => {
                     Led knownLed = _ledContext.Get(id);
                     knownLed.Display = newDisplayValue.Display;
-                    return knownLed;
+                    return knownLed.ToDto();
                 });
         }
 
         [HttpGet]
         [Route("{id}/_flick")]
-        public ActionResult<Led> Flick(int id)
+        public ActionResult<LedDto> Flick(ushort id)
         {
             _logger.LogInformation($"Flicking LED {id}");
 
-            return CatchExceptions<Led>(() => FlickAndUpdate(id));
+            return CatchExceptions(() => FlickAndUpdate(id).ToDto());
         }
 
-        private Led FlickAndUpdate(int id)
+        private Led FlickAndUpdate(ushort id)
         {
             var led = _ledContext.Flick(id);
             _hal.Update(led);
