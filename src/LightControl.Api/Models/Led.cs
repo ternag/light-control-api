@@ -3,7 +3,6 @@ namespace LightControl.Api.Models
 {
   public class Led
   {
-
     public Led(LedId id, string display, LedState state)
     {
       Id = id;

@@ -46,7 +46,7 @@ namespace LightControl.Api.Infrastructure
     public IEnumerable<Led> All => _leds;
 
 
-    public Led Get(int ledId)
+    public Led Get(LedId ledId)
     {
       if(ledId < 0 || ledId > (_leds.Count - 1)) 
       {
@@ -56,7 +56,7 @@ namespace LightControl.Api.Infrastructure
       return _leds.SingleOrDefault(x => x.Id == ledId);
     }
 
-    public Led Flick(int id)
+    public Led Flick(LedId id)
     {
       Led led = Get(id);
       if(led != null)
