@@ -58,7 +58,7 @@ namespace LightControl.Api.Hardware
     {
       var devices = new Dictionary<LedId, IDevice>();
       var device1 = new GpioDevice();
-      var device2 = new Mcp23017(new DeviceId (0x20));
+      var device2 = new Mcp23017(new Mcp23017Address (0x20));
       // Gpio
       devices.Add(0, device1);
       devices.Add(1, device1);
