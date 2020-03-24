@@ -22,6 +22,11 @@ namespace LightControl.Api.Hardware.Device
       _device.WriteUInt16(Register.GPIO, 0x0); // init all 16 pins to low (zero)
     }
 
+    public void InitPin(PinNumber pin)
+    {
+      // all pins are initialized in constructor for this device
+    }
+
     public Mcp23017Address Address { get; }
     public int Bus => 1;
 

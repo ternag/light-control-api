@@ -36,8 +36,10 @@ namespace LightControl.Api
         services.AddSingleton<IHal>((container) =>
         {
           var logger = container.GetRequiredService<ILogger<HardwareConfiguration>>();
+          var logger2 = container.GetRequiredService<ILogger<Hal>>();
+
           var hcf = new NoHardwareConfigurationFactory(logger);
-          return new Hal(hcf.Create());
+          return new Hal(hcf.Create(logger2));
         });
       }
       else
@@ -46,8 +48,10 @@ namespace LightControl.Api
         services.AddSingleton<IHal>((container) =>
         {
           var logger = container.GetRequiredService<ILogger<HardwareConfiguration>>();
+          var logger2 = container.GetRequiredService<ILogger<Hal>>();
+          
           var hcf = new HardwareConfigurationFactory(logger);
-          return new Hal(hcf.Create());
+          return new Hal(hcf.Create(logger2));
         });
       }
     }

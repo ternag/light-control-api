@@ -46,9 +46,26 @@ namespace LightControl.Api.Hardware
     public NoHardwareConfigurationFactory(ILogger<HardwareConfiguration> logger)
     {
       _logger = logger;
+      Init();
     }
     // TODO: Parse json file and create dictionaries
 
+    private void Init()
+    {
+      // TODO: Parse json file and create dictionaries
+      
+      // TODO: Fix this initialization stuff
+      var devices = GetDevices();
+      var pins = GetPins();
+      foreach (var deviceInfo in devices)
+      {
+        LedId id = deviceInfo.Key;
+        IDevice device = deviceInfo.Value;
+        device.InitPin(pins[id]);
+      }
+    }
+
+    
     public Dictionary<LedId, IDevice> GetDevices()
     {
       var devices = new Dictionary<LedId, IDevice>();
@@ -116,9 +133,9 @@ namespace LightControl.Api.Hardware
       return pins;
     }
 
-    public IHardwareConfiguration Create()
+    public IHardwareConfiguration Create(ILogger<Hal> logger)
     {
-      return new HardwareConfiguration(GetDevices(), GetPins());
+      return new HardwareConfiguration(GetDevices(), GetPins(), logger);
     }
   }
 }

@@ -19,5 +19,9 @@ namespace LightControl.Api.Hardware.Device
     }
 
     public string Name => "No hardware device";
+    public void InitPin(PinNumber pin)
+    {
+      _logger.LogInformation($"pin {pin} initialized");
+    }
   }
 }

@@ -41,7 +41,7 @@ namespace LightControl.Api.Hardware
   // }
   public interface IHardwareConfigurationFactory
   {
-    IHardwareConfiguration Create();
+    IHardwareConfiguration Create(ILogger<Hal> logger);
   }
 
   public class HardwareConfigurationFactory : IHardwareConfigurationFactory
@@ -51,14 +51,33 @@ namespace LightControl.Api.Hardware
     public HardwareConfigurationFactory(ILogger<HardwareConfiguration> logger)
     {
       _logger = logger;
+      Init();
     }
-    // TODO: Parse json file and create dictionaries
+
+    private void Init()
+    {
+      // TODO: Parse json file and create dictionaries
+      
+      // TODO: Fix this initialization stuff
+      var devices = GetDevices();
+      var pins = GetPins();
+      foreach (var deviceInfo in devices)
+      {
+        LedId id = deviceInfo.Key;
+        IDevice device = deviceInfo.Value;
+        device.InitPin(pins[id]);
+        _logger.LogInformation($"Initialized pin {pins[id]} on {device.Name}");
+      }
+    }
+    
 
     public Dictionary<LedId, IDevice> GetDevices()
     {
+      // TODO: devices should not be created every time GetDevices are called. Implement parser of configuration file.
       var devices = new Dictionary<LedId, IDevice>();
-      var device1 = new GpioDevice();
+      var device1 = new GpioDevice(_logger);
       var device2 = new Mcp23017(new Mcp23017Address(0x20));
+      
       // Gpio
       devices.Add(0, device1);
       devices.Add(1, device1);
@@ -121,9 +140,9 @@ namespace LightControl.Api.Hardware
       return pins;
     }
 
-    public IHardwareConfiguration Create()
+    public IHardwareConfiguration Create(ILogger<Hal> logger)
     {
-      return new HardwareConfiguration(GetDevices(), GetPins());
+      return new HardwareConfiguration(GetDevices(), GetPins(), logger);
     }
   }
 }

@@ -7,5 +7,6 @@ namespace LightControl.Api.Infrastructure
   {
     void Write(PinNumber pin, PinValue value);
     string Name { get; }
+    void InitPin(PinNumber pin);
   }
 }
