@@ -29,9 +29,9 @@ namespace LightControl.Api.UnitTest.Hardware
     [InlineData(65536)]
     public void GivenInvalidInput_CannotCreate(int invalidPinId)
     {
-        LedId sut;
-        Action act = () => sut = invalidPinId;
-        act.Should().Throw<Exception>();
+      LedId sut;
+      Action act = () => sut = invalidPinId;
+      act.Should().Throw<Exception>();
     }
   }
 }

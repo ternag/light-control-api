@@ -1,4 +1,3 @@
-
 namespace LightControl.Api.Models
 {
   public class Led

@@ -15,7 +15,6 @@ namespace LightControl.Api.Hardware
 
   public class HardwareConfiguration : IHardwareConfiguration
   {
-    
     public HardwareConfiguration(Dictionary<LedId, IDevice> devices, Dictionary<LedId, PinNumber> pins)
     {
       // TODO: Inject hardware configuration via constructor
@@ -31,7 +30,8 @@ namespace LightControl.Api.Hardware
       if (_devices.ContainsKey(id))
         return _devices[id];
       else
-        throw new ArgumentException($"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
+        throw new ArgumentException(
+          $"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
     }
 
     public PinNumber GetPin(LedId id)
@@ -39,7 +39,8 @@ namespace LightControl.Api.Hardware
       if (_pins.ContainsKey(id))
         return _pins[id];
       else
-        throw new ArgumentException($"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
+        throw new ArgumentException(
+          $"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
     }
   }
 }

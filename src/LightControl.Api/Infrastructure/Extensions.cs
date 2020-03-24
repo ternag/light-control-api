@@ -6,7 +6,7 @@ namespace LightControl.Api.Infrastructure
   {
     public static LedDto ToDto(this Led led)
     {
-      return new LedDto((ushort)led.Id, led.Display, led.State);
+      return new LedDto((ushort) led.Id, led.Display, led.State);
     }
   }
 }

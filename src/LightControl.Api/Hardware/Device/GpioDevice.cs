@@ -14,7 +14,7 @@ namespace LightControl.Api.Hardware.Device
 
     public void Write(PinNumber pin, PinValue value)
     {
-      _gpio.Write((int)pin, value);
+      _gpio.Write((int) pin, value);
     }
 
     public string Name => "Gpio";

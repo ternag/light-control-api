@@ -4,7 +4,7 @@ using System.Linq;
 using System.Device.Gpio;
 using LightControl.Api.Models;
 
-namespace LightControl.Api.Infrastructure 
+namespace LightControl.Api.Infrastructure
 {
   public class LED
   {
@@ -13,7 +13,7 @@ namespace LightControl.Api.Infrastructure
       Id = id;
       Pin = pin;
     }
-    
+
     public int Id { get; }
     public int Pin { get; }
   }

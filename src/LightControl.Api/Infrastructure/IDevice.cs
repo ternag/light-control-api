@@ -3,9 +3,9 @@ using LightControl.Api.Hardware;
 
 namespace LightControl.Api.Infrastructure
 {
-  public interface IDevice 
+  public interface IDevice
   {
     void Write(PinNumber pin, PinValue value);
-    string Name { get;  }
+    string Name { get; }
   }
 }

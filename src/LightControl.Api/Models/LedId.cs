@@ -3,7 +3,7 @@ using System;
 
 namespace LightControl.Api.Models
 {
-  public readonly struct LedId: IEquatable<LedId>, IComparable<LedId>
+  public readonly struct LedId : IEquatable<LedId>, IComparable<LedId>
   {
     public LedId(ushort value)
     {
@@ -20,27 +20,29 @@ namespace LightControl.Api.Models
     public static bool operator !=(LedId a, LedId b) => !a.Equals(b);
 
     public bool Equals(LedId other) => other._value == _value;
-    
+
     public override bool Equals(object? obj)
     {
       if (obj is LedId id)
       {
         return Equals(id);
       }
+
       return false;
     }
-   
+
     public override int GetHashCode() => _value.GetHashCode();
 
     public static bool operator >(LedId a, LedId b) => a._value > b._value;
     public static bool operator <(LedId a, LedId b) => a._value < b._value;
     public static bool operator >=(LedId a, LedId b) => a._value >= b._value;
     public static bool operator <=(LedId a, LedId b) => a._value <= b._value;
+
     public int CompareTo(LedId other)
     {
       return _value.CompareTo(other);
     }
-    
+
     public override string ToString() => _value.ToString();
   }
 }

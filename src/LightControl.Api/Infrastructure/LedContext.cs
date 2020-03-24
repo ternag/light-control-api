@@ -15,7 +15,8 @@ namespace LightControl.Api.Infrastructure
     {
       _logger = logger;
       // TODO: Inject the list 
-      _leds = new List<Led> {
+      _leds = new List<Led>
+      {
         new Led(0, "Nr. 1", LedState.Off),
         new Led(1, "Nr. 2", LedState.Off),
         new Led(2, "Nr. 3", LedState.Off),
@@ -48,9 +49,10 @@ namespace LightControl.Api.Infrastructure
 
     public Led Get(LedId ledId)
     {
-      if(ledId < 0 || ledId > (_leds.Count - 1)) 
+      if (ledId < 0 || ledId > (_leds.Count - 1))
       {
-        throw new ArgumentException($"{nameof(ledId)}={ledId} is out of bounds. Boundry is [0..{_leds.Count - 1}]", nameof(ledId));
+        throw new ArgumentException($"{nameof(ledId)}={ledId} is out of bounds. Boundry is [0..{_leds.Count - 1}]",
+          nameof(ledId));
       }
 
       return _leds.SingleOrDefault(x => x.Id == ledId);
@@ -59,10 +61,11 @@ namespace LightControl.Api.Infrastructure
     public Led Flick(LedId id)
     {
       Led led = Get(id);
-      if(led != null)
+      if (led != null)
       {
         led.Flick();
       }
+
       return led;
     }
   }

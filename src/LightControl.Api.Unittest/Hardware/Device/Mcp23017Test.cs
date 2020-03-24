@@ -28,26 +28,24 @@ namespace LightControl.Api.UnitTest.Hardware.Device
     [Fact]
     public void GivenValidBitArray_ConvertsToUShort()
     {
-      var ar = new BitArray(new byte[] {0xFF, 0x05 });
+      var ar = new BitArray(new byte[] {0xFF, 0x05});
       var actual = Mcp23017.BitArrayToUshort(ar);
       actual.Should().Be(0x05FF);
     }
-    
+
     [Fact]
     public void GivenNullInput_ShouldThrowArgumentNullException()
     {
       Func<ushort> func = () => Mcp23017.BitArrayToUshort(null);
       func.Should().Throw<ArgumentNullException>();
     }
-    
+
     [Fact]
     public void GivenToBigBitArray_ShouldThrowArgumentException()
     {
-      var ar = new BitArray(new byte[] {0xFF, 0xFF, 0x1 });
+      var ar = new BitArray(new byte[] {0xFF, 0xFF, 0x1});
       Func<ushort> func = () => Mcp23017.BitArrayToUshort(ar);
       func.Should().Throw<ArgumentException>();
     }
-    
-    
   }
 }

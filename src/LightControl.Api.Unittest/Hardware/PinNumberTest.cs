@@ -30,9 +30,9 @@ namespace LightControl.Api.Unittest
     [InlineData(65536)]
     public void GivenInvalidInput_CannotCreate(int invalidPinNumber)
     {
-        PinNumber sut;
-        Action act = () => sut = invalidPinNumber;
-        act.Should().Throw<Exception>();
+      PinNumber sut;
+      Action act = () => sut = invalidPinNumber;
+      act.Should().Throw<Exception>();
     }
   }
 }

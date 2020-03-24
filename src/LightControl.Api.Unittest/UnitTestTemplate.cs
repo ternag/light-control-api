@@ -3,12 +3,11 @@ using Xunit;
 
 namespace LightControl.Api.Unittest
 {
-    public class UnitTestTemplate
+  public class UnitTestTemplate
+  {
+    [Fact]
+    public void Template()
     {
-        [Fact]
-        public void Template()
-        {
-
-        }
     }
+  }
 }

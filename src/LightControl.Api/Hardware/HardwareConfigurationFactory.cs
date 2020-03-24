@@ -43,8 +43,8 @@ namespace LightControl.Api.Hardware
   {
     IHardwareConfiguration Create();
   }
-  
-  public class HardwareConfigurationFactory: IHardwareConfigurationFactory
+
+  public class HardwareConfigurationFactory : IHardwareConfigurationFactory
   {
     private readonly ILogger<HardwareConfiguration> _logger;
 
@@ -53,12 +53,12 @@ namespace LightControl.Api.Hardware
       _logger = logger;
     }
     // TODO: Parse json file and create dictionaries
-    
+
     public Dictionary<LedId, IDevice> GetDevices()
     {
       var devices = new Dictionary<LedId, IDevice>();
       var device1 = new GpioDevice();
-      var device2 = new Mcp23017(new Mcp23017Address (0x20));
+      var device2 = new Mcp23017(new Mcp23017Address(0x20));
       // Gpio
       devices.Add(0, device1);
       devices.Add(1, device1);
@@ -85,7 +85,7 @@ namespace LightControl.Api.Hardware
       devices.Add(21, device2);
       devices.Add(22, device2);
       devices.Add(23, device2);
-      
+
       return devices;
     }
 

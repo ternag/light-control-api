@@ -39,7 +39,7 @@ namespace LightControl.Api.Hardware
   //     ]
   //   }
   // }
-  public class NoHardwareConfigurationFactory: IHardwareConfigurationFactory
+  public class NoHardwareConfigurationFactory : IHardwareConfigurationFactory
   {
     private readonly ILogger<HardwareConfiguration> _logger;
 
@@ -48,7 +48,7 @@ namespace LightControl.Api.Hardware
       _logger = logger;
     }
     // TODO: Parse json file and create dictionaries
-    
+
     public Dictionary<LedId, IDevice> GetDevices()
     {
       var devices = new Dictionary<LedId, IDevice>();
@@ -80,7 +80,7 @@ namespace LightControl.Api.Hardware
       devices.Add(21, device2);
       devices.Add(22, device2);
       devices.Add(23, device2);
-      
+
       return devices;
     }
 

@@ -28,7 +28,7 @@ namespace LightControl.Api
       services.AddControllers();
       services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
       services.AddSingleton<ILedContext, LedContext>();
-      
+
       // Registre Hardware Abstraction Layer dependent on environment
       if (_env.IsDevelopment())
       {
@@ -66,15 +66,12 @@ namespace LightControl.Api
 
       app.UseForwardedHeaders(new ForwardedHeadersOptions
       {
-          ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
       });
 
       //app.UseAuthorization();
 
-      app.UseEndpoints(endpoints =>
-      {
-        endpoints.MapControllers();
-      });
+      app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
   }
 }

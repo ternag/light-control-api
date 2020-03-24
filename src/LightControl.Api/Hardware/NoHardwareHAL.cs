@@ -14,6 +14,7 @@ namespace LightControl.Api.Hardware
       this._logger = logger;
       _hardwareConfiguration = hardwareConfiguration;
     }
+
     public void Update(Led led)
     {
       IDevice device = _hardwareConfiguration.GetDevice(led.Id);

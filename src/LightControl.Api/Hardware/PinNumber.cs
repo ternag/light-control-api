@@ -25,14 +25,17 @@ namespace LightControl.Api.Hardware
 
 
     public bool Equals(PinNumber other) => other._value == _value;
+
     public override bool Equals(object obj)
     {
-      if(obj is PinNumber)
+      if (obj is PinNumber)
       {
-        return Equals((PinNumber)obj);
+        return Equals((PinNumber) obj);
       }
+
       return false;
     }
+
     public override int GetHashCode() => _value.GetHashCode();
     public override string ToString() => _value.ToString();
   }
