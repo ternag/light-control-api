@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware
 {
+  // ToDo: Implement IDisposable (_hardwareConfiguration)
   public class Hal : IHal
   {
     private readonly IHardwareConfiguration _hardwareConfiguration;
