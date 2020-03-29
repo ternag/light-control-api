@@ -4,12 +4,13 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
 {
+  // ToDo: Implement IDisposable
   public class GpioDevice : IDevice
   {
-    private readonly ILogger<HardwareConfiguration> _logger;
+    private readonly ILogger _logger;
     GpioController _gpio;
 
-    public GpioDevice(ILogger<HardwareConfiguration> logger)
+    public GpioDevice(ILogger logger)
     {
       _logger = logger;
       _gpio = new GpioController();
@@ -29,6 +30,6 @@ namespace LightControl.Api.Hardware.Device
       _gpio.Write((int) pin, value);
     }
 
-    public string Name => "Gpio";
+    public string DisplayName => "Gpio";
   }
 }
