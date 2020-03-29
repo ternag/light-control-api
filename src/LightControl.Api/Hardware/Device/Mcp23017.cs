@@ -32,7 +32,7 @@ namespace LightControl.Api.Hardware.Device
     }
 
     public Mcp23017Address Address { get; }
-    public int Bus => 1;
+    public int Bus => 1; // ToDo: Make configurable (Raspberry PI 3 uses Bus 1)  
 
     public void Write(PinNumber pin, PinValue value)
     {
