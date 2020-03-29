@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace LightControl.Api.Unittest
+namespace LightControl.Api.UnitTest
 {
   public class UnitTestTemplate
   {
