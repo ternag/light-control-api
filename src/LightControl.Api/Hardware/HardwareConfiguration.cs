@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware
 {
+  // ToDo: Implement IDisposable (dispose devices)
   public interface IHardwareConfiguration
   {
     IDevice GetDevice(LedId id);
@@ -16,18 +17,15 @@ namespace LightControl.Api.Hardware
 
   public class HardwareConfiguration : IHardwareConfiguration
   {
-    public HardwareConfiguration(Dictionary<LedId, IDevice> devices, Dictionary<LedId, PinNumber> pins,
-      ILogger<Hal> logger)
+    public HardwareConfiguration(Dictionary<LedId, IDevice> devices, Dictionary<LedId, PinNumber> pins)
     {
       // TODO: Inject hardware configuration via constructor
       _devices = devices;
       _pins = pins;
-      _logger = logger;
     }
 
     private readonly Dictionary<LedId, IDevice> _devices;
     private readonly Dictionary<LedId, PinNumber> _pins;
-    private readonly ILogger<Hal> _logger;
 
     public IDevice GetDevice(LedId id)
     {

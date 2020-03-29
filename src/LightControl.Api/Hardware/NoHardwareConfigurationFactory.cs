@@ -41,11 +41,13 @@ namespace LightControl.Api.Hardware
   // }
   public class NoHardwareConfigurationFactory : IHardwareConfigurationFactory
   {
-    private readonly ILogger<HardwareConfiguration> _logger;
+    private readonly ILogger _logger;
+    private readonly ILogger<IDevice> _deviceLogger;
 
-    public NoHardwareConfigurationFactory(ILogger<HardwareConfiguration> logger)
+    public NoHardwareConfigurationFactory(ILogger logger, ILogger<IDevice> deviceLogger)
     {
       _logger = logger;
+      _deviceLogger = deviceLogger;
       Init();
     }
     // TODO: Parse json file and create dictionaries
@@ -69,8 +71,8 @@ namespace LightControl.Api.Hardware
     public Dictionary<LedId, IDevice> GetDevices()
     {
       var devices = new Dictionary<LedId, IDevice>();
-      var device1 = new NoHardwareDevice(_logger);
-      var device2 = new NoHardwareDevice(_logger);
+      var device1 = new NoHardwareDevice(_deviceLogger);
+      var device2 = new NoHardwareDevice(_deviceLogger);
       // Gpio
       devices.Add(0, device1);
       devices.Add(1, device1);
@@ -133,9 +135,9 @@ namespace LightControl.Api.Hardware
       return pins;
     }
 
-    public IHardwareConfiguration Create(ILogger<Hal> logger)
+    public IHardwareConfiguration Create()
     {
-      return new HardwareConfiguration(GetDevices(), GetPins(), logger);
+      return new HardwareConfiguration(GetDevices(), GetPins());
     }
   }
 }
