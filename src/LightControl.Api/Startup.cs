@@ -26,33 +26,19 @@ namespace LightControl.Api
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllers();
+      services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
       services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
       services.AddSingleton<ILedContext, LedContext>();
+      services.AddSingleton<IHardwareContext, HardwareContext>();
 
       // Registre Hardware Abstraction Layer dependent on environment
       if (_env.IsDevelopment())
       {
         services.AddSingleton<IHardwareConfigurationFactory, NoHardwareConfigurationFactory>();
-        services.AddSingleton<IHal>((container) =>
-        {
-          var logger = container.GetRequiredService<ILogger<HardwareConfiguration>>();
-          var logger2 = container.GetRequiredService<ILogger<Hal>>();
-
-          var hcf = new NoHardwareConfigurationFactory(logger);
-          return new Hal(hcf.Create(logger2));
-        });
       }
       else
       {
         services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
-        services.AddSingleton<IHal>((container) =>
-        {
-          var logger = container.GetRequiredService<ILogger<HardwareConfiguration>>();
-          var logger2 = container.GetRequiredService<ILogger<Hal>>();
-          
-          var hcf = new HardwareConfigurationFactory(logger);
-          return new Hal(hcf.Create(logger2));
-        });
       }
     }
 

@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LightControl.Api.Hardware;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LightControl.Api.Models;
@@ -16,13 +17,13 @@ namespace LightControl.Api.Controllers
   {
     private readonly ILogger<LedController> _logger;
     private readonly ILedContext _ledContext;
-    private readonly IHal _hal;
+    private readonly IHardwareContext _hardwareContext;
 
-    public LedController(ILedContext ledContext, ILogger<LedController> logger, IHal hal)
+    public LedController(ILedContext ledContext, ILogger<LedController> logger, IHardwareContext hardwareContext)
     {
       _logger = logger;
       _ledContext = ledContext;
-      _hal = hal;
+      _hardwareContext = hardwareContext;
     }
 
     [HttpGet]
@@ -67,7 +68,7 @@ namespace LightControl.Api.Controllers
     private Led FlickAndUpdate(ushort id)
     {
       var led = _ledContext.Flick(id);
-      _hal.Update(led);
+      _hardwareContext.Hal.Update(led);
       return led;
     }
 
