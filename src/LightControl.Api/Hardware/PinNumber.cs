@@ -2,7 +2,7 @@ using System;
 
 namespace LightControl.Api.Hardware
 {
-  public readonly struct PinNumber : IEquatable<PinNumber>
+  public readonly struct PinNumber : IEquatable<PinNumber>, IFormattable
   {
     public PinNumber(ushort value)
     {
@@ -38,5 +38,10 @@ namespace LightControl.Api.Hardware
 
     public override int GetHashCode() => _value.GetHashCode();
     public override string ToString() => _value.ToString();
+
+    public string ToString(string format, IFormatProvider formatProvider)
+    {
+      return _value.ToString(format, formatProvider);
+    }
   }
 }

@@ -3,7 +3,7 @@ using System;
 
 namespace LightControl.Api.Models
 {
-  public readonly struct LedId : IEquatable<LedId>, IComparable<LedId>
+  public readonly struct LedId : IEquatable<LedId>, IComparable<LedId>, IFormattable
   {
     public LedId(ushort value)
     {
@@ -44,5 +44,10 @@ namespace LightControl.Api.Models
     }
 
     public override string ToString() => _value.ToString();
+
+    public string ToString(string? format, IFormatProvider? formatProvider)
+    {
+      return _value.ToString(format, formatProvider);
+    }
   }
 }
