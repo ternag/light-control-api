@@ -13,26 +13,22 @@ namespace LightControl.Api.Hardware
   {
     private readonly IHardwareConfigurationFactory _hardwareConfigurationFactory;
     private readonly ILogger<HardwareContext> _logger;
-    private IHal _hal;
 
     public HardwareContext(IHardwareConfigurationFactory hardwareConfigurationFactory, ILogger<HardwareContext> logger)
     {
       _hardwareConfigurationFactory = hardwareConfigurationFactory;
-      InitHardware();
-    }
-
-    private void InitHardware()
-    {
-      var hardwareConfiguration = _hardwareConfigurationFactory.Create();
-      // ToDo: Dispose old _hal before creating new one
-      _hal = new Hal(hardwareConfiguration);
+      _logger = logger;
+      ReloadHardwareConfiguration();
     }
 
     public void ReloadHardwareConfiguration()
     {
-      InitHardware();
+      _logger.LogInformation("Reload hardware configuration");
+      // Dispose old _hal before creating new one
+      Hal?.Dispose();
+      Hal = new Hal(_hardwareConfigurationFactory.Create());
     }
 
-    public IHal Hal => _hal;
+    public IHal Hal { get; private set; }
   }
 }

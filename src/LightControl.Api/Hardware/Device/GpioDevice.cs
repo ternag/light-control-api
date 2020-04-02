@@ -18,18 +18,23 @@ namespace LightControl.Api.Hardware.Device
 
     public void InitPin(PinNumber pin)
     {
-      _gpio.OpenPin((int)pin, PinMode.Output);
-      _gpio.Write((int)pin, PinValue.Low);
+      _gpio.OpenPin((int) pin, PinMode.Output);
+      _gpio.Write((int) pin, PinValue.Low);
     }
-    
+
     public void Write(PinNumber pin, PinValue value)
     {
-      _logger.LogInformation($"Writing {value} to pin {pin}");
-      _gpio.OpenPin((int)pin, PinMode.Output); // TODO: Remove, when HardwareConfigurationFactory works.
-                                               // Devices is created every time GetDevices are called !
+      _logger.LogDebug($"Writing {value} to pin {pin}");
+      _gpio.OpenPin((int) pin, PinMode.Output); // TODO: Remove, when HardwareConfigurationFactory works.
+      // Devices is created every time GetDevices are called !
       _gpio.Write((int) pin, value);
     }
 
     public string DisplayName => "Gpio";
+
+    public void Dispose()
+    {
+      _gpio?.Dispose();
+    }
   }
 }

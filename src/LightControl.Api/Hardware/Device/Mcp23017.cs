@@ -66,5 +66,10 @@ namespace LightControl.Api.Hardware.Device
     }
 
     public string DisplayName => "MCP23017";
+
+    public void Dispose()
+    {
+      _device?.Dispose();
+    }
   }
 }

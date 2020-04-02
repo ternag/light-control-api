@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 namespace LightControl.Api.Hardware
 {
   // ToDo: Implement IDisposable (dispose devices)
-  public interface IHardwareConfiguration
+  public interface IHardwareConfiguration : IDisposable
   {
     IDevice GetDevice(LedId id);
     PinNumber GetPin(LedId id);
@@ -43,6 +43,14 @@ namespace LightControl.Api.Hardware
       else
         throw new ArgumentException(
           $"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
+    }
+
+    public void Dispose()
+    {
+      foreach (var pair in _devices)
+      {
+        pair.Value?.Dispose();
+      }
     }
   }
 }

@@ -23,7 +23,12 @@ namespace LightControl.Api.Hardware.Device
 
     public void InitPin(PinNumber pin)
     {
-      _logger.LogInformation($"pin {pin} initialized");
+      _logger.LogDebug($"pin {pin} initialized");
+    }
+
+    public void Dispose()
+    {
+      // Nothing to se here. Move along.
     }
   }
 }

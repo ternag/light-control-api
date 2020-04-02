@@ -20,5 +20,10 @@ namespace LightControl.Api.Hardware
       var pin = _hardwareConfiguration.GetPin(led.Id);
       device.Write(pin, led.State.ToPinValue());
     }
+
+    public void Dispose()
+    {
+      _hardwareConfiguration?.Dispose();
+    }
   }
 }
