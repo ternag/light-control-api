@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LightControl.Api.Hardware;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LightControl.Api.Controllers
 {
@@ -6,10 +7,18 @@ namespace LightControl.Api.Controllers
   [Route("/api/[controller]")]
   public class ResetController : Controller
   {
-    // GET
-    public ActionResult<bool> Index()
+    private IHardwareContext _hardwareContext;
+
+    public ResetController(IHardwareContext hardwareContext)
     {
-      return false;
+      _hardwareContext = hardwareContext;
+    }
+
+    // GET
+    public IActionResult Index()
+    {
+      _hardwareContext.ReloadHardwareConfiguration();
+      return Ok();
     }
   }
 }
