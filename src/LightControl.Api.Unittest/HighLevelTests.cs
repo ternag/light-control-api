@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -19,7 +20,14 @@ namespace LightControl.Api.UnitTest
       _outputHelper = outputHelper;
       var server = new TestServer(new WebHostBuilder()
         .UseEnvironment("Development")
-        .UseStartup<Startup>());
+        .UseStartup<Startup>()
+        .ConfigureLogging(logging =>
+        {
+          logging.ClearProviders();
+          logging.AddXUnit(outputHelper);
+          logging.SetMinimumLevel(LogLevel.Error); // comment out to use default log level => info 
+          //logging.SetMinimumLevel(LogLevel.Debug);
+        }));
       _client = server.CreateClient();
     }
 
@@ -33,11 +41,11 @@ namespace LightControl.Api.UnitTest
     }
 
     [Fact]
-    public async Task FlickShouldRetureLedObject()
+    public async Task FlickShouldReturnLedObjectInNewState()
     {
       // Act
       var response = await _client.GetAsync("/api/led/3/_flick");
-      
+
       // Assert
       //response.EnsureSuccessStatusCode();
       JsonDocument json = await GetJsonFromContent(response);
