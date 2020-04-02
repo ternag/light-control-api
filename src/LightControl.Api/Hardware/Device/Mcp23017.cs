@@ -40,7 +40,7 @@ namespace LightControl.Api.Hardware.Device
         throw new ArgumentException(
           $"The Mcp23017 device can only handle pin number between 0 and 15. Provided PinNumber was {pin}");
 
-      _logger.LogDebug($"Setting pin {pin:x}");
+      _logger.LogDebug($"Setting pin {pin:x} to {value}");
       _pinValues = SetBit(_pinValues, (ushort) pin, (bool) value);
       _device.WriteUInt16(Register.GPIO, _pinValues);
     }

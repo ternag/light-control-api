@@ -16,10 +16,11 @@ namespace LightControl.Api.Hardware.Device
 
     public void Write(PinNumber pin, PinValue value)
     {
-      _logger.LogInformation($"Writing '{value}' to pin '{pin}'");
+      _logger.LogInformation($"Writing '{value}' to pin '{pin:x}'");
     }
 
     public string DisplayName => "No hardware device";
+
     public void InitPin(PinNumber pin)
     {
       _logger.LogInformation($"pin {pin} initialized");
