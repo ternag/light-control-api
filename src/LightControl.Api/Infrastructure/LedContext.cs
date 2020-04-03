@@ -51,7 +51,7 @@ namespace LightControl.Api.Infrastructure
     {
       if (ledId < 0 || ledId > (_leds.Count - 1))
       {
-        throw new ArgumentException($"{nameof(ledId)}={ledId} is out of bounds. Boundry is [0..{_leds.Count - 1}]",
+        throw new ArgumentException($"{nameof(ledId)}={ledId} is out of bounds. Boundary is [0..{_leds.Count - 1}]",
           nameof(ledId));
       }
 
@@ -61,10 +61,7 @@ namespace LightControl.Api.Infrastructure
     public Led Flick(LedId id)
     {
       Led led = Get(id);
-      if (led != null)
-      {
-        led.Flick();
-      }
+      led?.Flick();
 
       return led;
     }
