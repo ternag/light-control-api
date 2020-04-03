@@ -1,4 +1,5 @@
-﻿using LightControl.Api.Hardware;
+﻿using System;
+using LightControl.Api.Hardware;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LightControl.Api.Controllers

@@ -33,7 +33,7 @@ namespace LightControl.Api.Hardware
         return _devices[id];
       else
         throw new ArgumentException(
-          $"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
+          $"The LedId '{id}' is unknown. Make sure the id is registered in the hardware configuration");
     }
 
     public PinNumber GetPin(LedId id)
@@ -42,7 +42,7 @@ namespace LightControl.Api.Hardware
         return _pins[id];
       else
         throw new ArgumentException(
-          $"The Pin id '{id}' is unknown. Make sure the id is registered in the hardware configuration");
+          $"The LedId '{id}' is unknown. Make sure the id is registered in the hardware configuration");
     }
 
     public void Dispose()
