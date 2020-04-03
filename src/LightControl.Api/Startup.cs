@@ -47,12 +47,17 @@ namespace LightControl.Api
     {
       if (_env.IsDevelopment())
       {
-        app.UseDeveloperExceptionPage();
+        app.UseExceptionHandler("/error");
+        //app.UseDeveloperExceptionPage();
+      }
+      else
+      {
+        app.UseExceptionHandler("/error");
       }
 
-      //app.UseHttpsRedirection();
-
       app.UseRouting();
+
+      //app.UseHttpsRedirection();
 
       app.UseForwardedHeaders(new ForwardedHeadersOptions
       {
