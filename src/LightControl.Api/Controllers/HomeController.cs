@@ -8,9 +8,9 @@ namespace LightControl.Api.Controllers
   [Route("/")]
   public class HomeController : ControllerBase
   {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger logger)
     {
       _logger = logger;
     }

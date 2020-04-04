@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using LightControl.Api.Infrastructure;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace LightControl.Api
 {
@@ -27,7 +29,6 @@ namespace LightControl.Api
     {
       services.AddControllers();
       services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
-      services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
       services.AddSingleton<ILedContext, LedContext>();
       services.AddSingleton<IHardwareContext, HardwareContext>();
 
@@ -47,12 +48,12 @@ namespace LightControl.Api
     {
       if (_env.IsDevelopment())
       {
-        app.UseExceptionHandler("/error");
-        //app.UseDeveloperExceptionPage();
+        app.UseDeveloperExceptionPage();
       }
       else
       {
         app.UseExceptionHandler("/error");
+        app.UseSerilogRequestLogging();
       }
 
       app.UseRouting();

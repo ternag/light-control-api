@@ -15,11 +15,11 @@ namespace LightControl.Api.Controllers
   [Route("/api/[controller]")]
   public class LedController : ControllerBase
   {
-    private readonly ILogger<LedController> _logger;
+    private readonly ILogger _logger;
     private readonly ILedContext _ledContext;
     private readonly IHardwareContext _hardwareContext;
 
-    public LedController(ILedContext ledContext, ILogger<LedController> logger, IHardwareContext hardwareContext)
+    public LedController(ILedContext ledContext, ILogger logger, IHardwareContext hardwareContext)
     {
       _logger = logger;
       _ledContext = ledContext;

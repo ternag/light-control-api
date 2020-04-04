@@ -24,7 +24,7 @@ namespace LightControl.Api.UnitTest
         .ConfigureLogging(logging =>
         {
           logging.ClearProviders();
-          logging.AddXUnit(outputHelper);
+          logging.AddXUnit(outputHelper); // Route logging to xUnit output helper
           logging.SetMinimumLevel(LogLevel.Error); // comment out to use default log level => info 
           //logging.SetMinimumLevel(LogLevel.Debug);
         }));

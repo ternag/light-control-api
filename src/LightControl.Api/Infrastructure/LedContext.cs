@@ -9,9 +9,9 @@ namespace LightControl.Api.Infrastructure
   public class LedContext : ILedContext
   {
     private readonly List<Led> _leds;
-    private readonly ILogger<LedContext> _logger;
+    private readonly ILogger _logger;
 
-    public LedContext(ILogger<LedContext> logger)
+    public LedContext(ILogger logger)
     {
       _logger = logger;
       // TODO: Inject the list 

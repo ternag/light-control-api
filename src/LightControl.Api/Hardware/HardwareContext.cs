@@ -13,9 +13,9 @@ namespace LightControl.Api.Hardware
   public class HardwareContext : IHardwareContext
   {
     private readonly IHardwareConfigurationFactory _hardwareConfigurationFactory;
-    private readonly ILogger<HardwareContext> _logger;
+    private readonly ILogger _logger;
 
-    public HardwareContext(IHardwareConfigurationFactory hardwareConfigurationFactory, ILogger<HardwareContext> logger)
+    public HardwareContext(IHardwareConfigurationFactory hardwareConfigurationFactory, ILogger logger)
     {
       _hardwareConfigurationFactory = hardwareConfigurationFactory;
       _logger = logger;

@@ -11,11 +11,11 @@ namespace LightControl.Api.Hardware.Device
   // ToDo: Implement IDisposable
   public class Mcp23017 : IDevice
   {
-    private readonly ILogger<IDevice> _logger;
+    private readonly ILogger _logger;
     private readonly Iot.Device.Mcp23xxx.Mcp23017 _device;
     private ushort _pinValues = 0x0;
 
-    public Mcp23017(Mcp23017Address address, ILogger<IDevice> logger)
+    public Mcp23017(Mcp23017Address address, ILogger logger)
     {
       _logger = logger;
       Address = address;
