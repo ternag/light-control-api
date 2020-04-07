@@ -1,0 +1,42 @@
+﻿{
+  "name": "Buildings",
+  "lights": [
+    { "id": "0x18", "name": "Diner lamp post" }
+  ],
+  "groups" : [
+    {
+      "name": "Diner",
+      "groups" : [
+        {
+          "name": "Ground floor",
+          "lights": [
+            { "id": "0x10", "name": "Kitchen" },
+            { "id": "0x11", "name": "Counter" },
+            { "id": "0x12", "name": "Table" }
+          ]
+        },
+        {
+          "name": "1st floor",
+          "lights": [
+            { "id": "0x13", "name": "Hall" },
+            { "id": "0x14", "name": "Ring" }
+          ]
+        },
+        {
+          "name": "2nd floor",
+          "lights": [
+            { "id": "0x15", "name": "Hall" },
+            { "id": "0x16", "name": "Studio" }
+          ]
+        },
+        {
+          "name": "Outdoor",
+          "lights": [
+            { "id": "0x17", "name": "Back stairs" },
+            { "id": "0x18", "name": "Lamp post" }
+          ]
+        }
+      ]
+    }
+  ]
+}

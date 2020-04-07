@@ -1,51 +1,25 @@
 ﻿using System.Collections.Generic;
 using LightControl.Api.Hardware.Device;
 using LightControl.Api.Infrastructure;
+using LightControl.Api.Infrastructure.Hardware;
 using LightControl.Api.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace LightControl.Api.Hardware
 {
-  // {
-  //   "gpio": {
-  //     "deviceType": "gpio",
-  //     "map": [
-  //       { id: 0, pin: 4},
-  //       { id: 1, pin: 17},
-  //       { id: 2, pin: 27},
-  //       { id: 3, pin: 22},
-  //       { id: 4, pin: 5},
-  //       { id: 5, pin: 6},
-  //       { id: 6, pin: 13},
-  //       { id: 7, pin: 19}
-  //     ]
-  //   },
-  //   "i2c-1": {
-  //     "deviceType": "mcp23017",
-  //     "deviceId": 0x20,
-  //     "busId": 1,
-  //     "map": [
-  //       { id: 112, pin: 0},
-  //       { id: 113, pin: 1},
-  //       { id: 114, pin: 2},
-  //       { id: 115, pin: 3},
-  //       { id: 116, pin: 4},
-  //       { id: 117, pin: 5},
-  //       { id: 118, pin: 6},
-  //       { id: 119, pin: 7},
-  //       { id: 120, pin: 8},
-  //       { id: 121, pin: 9},
-  //       { id: 122, pin: 10},
-  //     ]
-  //   }
-  // }
+  
   public class NoHardwareConfigurationFactory : IHardwareConfigurationFactory
   {
     private readonly ILogger _logger;
+    private readonly IHardwareFileParser _hardwareFileParser;
+    private readonly IOptionsMonitor<HardwareOptions> _options;
 
-    public NoHardwareConfigurationFactory(ILogger logger)
+    public NoHardwareConfigurationFactory(ILogger logger, IHardwareFileParser hardwareFileParser, IOptionsMonitor<HardwareOptions> options)
     {
       _logger = logger;
+      _hardwareFileParser = hardwareFileParser;
+      _options = options;
       Init();
     }
     // TODO: Parse json file and create dictionaries
@@ -135,6 +109,7 @@ namespace LightControl.Api.Hardware
 
     public IHardwareConfiguration Create()
     {
+      _logger.LogInformation($"Hardware config filepath '{_options.CurrentValue.ConfigurationFilepath}'");
       return new HardwareConfiguration(GetDevices(), GetPins());
     }
   }

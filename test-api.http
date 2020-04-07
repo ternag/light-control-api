@@ -8,6 +8,9 @@ GET {{api}}
 GET {{api}}/led
 
 ###
+GET {{api}}/api/reset
+
+###
 
 GET {{api}}/led/2
 

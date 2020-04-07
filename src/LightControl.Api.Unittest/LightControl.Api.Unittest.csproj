@@ -16,11 +16,17 @@
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
         <PackageReference Include="coverlet.collector" Version="1.0.1" />
         <PackageReference Include="FluentAssertions" Version="5.10.3" />
-        <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0"/>
+        <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\LightControl.Api\LightControl.Api.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Hardware\hardware.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

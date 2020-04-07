@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using LightControl.Api.Hardware.Device;
 using LightControl.Api.Infrastructure;
+using LightControl.Api.Infrastructure.Hardware;
 using LightControl.Api.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace LightControl.Api.Hardware
 {
@@ -47,10 +49,15 @@ namespace LightControl.Api.Hardware
   public class HardwareConfigurationFactory : IHardwareConfigurationFactory
   {
     private readonly ILogger _logger;
+    private readonly IHardwareFileParser _hardwareFileParser;
+    private readonly IOptions<HardwareOptions> _options;
 
-    public HardwareConfigurationFactory(ILogger logger)
+    public HardwareConfigurationFactory(ILogger logger, IHardwareFileParser hardwareFileParser, IOptions<HardwareOptions> options)
     {
       _logger = logger;
+      _hardwareFileParser = hardwareFileParser;
+      _options = options;
+      _logger.LogInformation($"Hardware config filepath {options.Value.ConfigurationFilepath}");
       Init();
     }
 
@@ -142,6 +149,7 @@ namespace LightControl.Api.Hardware
 
     public IHardwareConfiguration Create()
     {
+      _logger.LogInformation($"Hardware config filepath {_options.Value.ConfigurationFilepath}");
       return new HardwareConfiguration(GetDevices(), GetPins());
     }
   }
