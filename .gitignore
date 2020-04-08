@@ -354,3 +354,9 @@ MigrationBackup/
 
 # VS Code
 *.code-workspace
+
+# Rider ide
+.idea/
+
+# vscode
+.vscode/
