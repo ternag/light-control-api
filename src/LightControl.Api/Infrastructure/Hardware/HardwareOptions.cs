@@ -1,4 +1,4 @@
-﻿namespace LightControl.Api.Hardware
+﻿namespace LightControl.Api.Infrastructure.Hardware
 {
   public class HardwareOptions
   {
