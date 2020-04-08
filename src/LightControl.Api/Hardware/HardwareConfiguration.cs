@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using LightControl.Api.Hardware.Device;
-using LightControl.Api.Infrastructure;
 using LightControl.Api.Models;
-using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware
 {

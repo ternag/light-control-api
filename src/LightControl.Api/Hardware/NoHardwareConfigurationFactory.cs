@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using LightControl.Api.Hardware.Device;
-using LightControl.Api.Infrastructure;
-using LightControl.Api.Infrastructure.Hardware;
 using LightControl.Api.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -12,13 +10,13 @@ namespace LightControl.Api.Hardware
   public class NoHardwareConfigurationFactory : IHardwareConfigurationFactory
   {
     private readonly ILogger _logger;
-    private readonly IHardwareFileParser _hardwareFileParser;
+    private readonly IHardwareConfigurationLoader _hardwareConfigurationLoader;
     private readonly IOptionsMonitor<HardwareOptions> _options;
 
-    public NoHardwareConfigurationFactory(ILogger logger, IHardwareFileParser hardwareFileParser, IOptionsMonitor<HardwareOptions> options)
+    public NoHardwareConfigurationFactory(ILogger logger, IHardwareConfigurationLoader hardwareConfigurationLoader, IOptionsMonitor<HardwareOptions> options)
     {
       _logger = logger;
-      _hardwareFileParser = hardwareFileParser;
+      _hardwareConfigurationLoader = hardwareConfigurationLoader;
       _options = options;
       Init();
     }

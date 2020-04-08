@@ -1,5 +1,4 @@
 using System.Device.Gpio;
-using LightControl.Api.Infrastructure;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device

@@ -15,12 +15,5 @@ namespace LightControl.Api.UnitTest.Hardware
       var hardwareInfo = sut.Parse(json);
       hardwareInfo.Devices.Should().HaveCount(2);
     }
-
-    [Fact]
-    public void Test()
-    {
-      HardwareFileParser sut = new HardwareFileParser();
-      sut.Serialize();
-    }
   }
 }

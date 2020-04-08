@@ -1,6 +1,4 @@
-﻿using System;
-using LightControl.Api.Infrastructure;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware
 {

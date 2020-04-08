@@ -34,7 +34,7 @@ namespace LightControl.Api
       services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
       services.AddSingleton<ILedContext, LedContext>();
       services.AddSingleton<IHardwareContext, HardwareContext>();
-      services.AddSingleton<IHardwareFileParser, HardwareFileParser>();
+      services.AddSingleton<IHardwareConfigurationLoader, HardwareConfigurationLoader>();
 
       // Registre Hardware Abstraction Layer dependent on environment
       if (_env.IsDevelopment())

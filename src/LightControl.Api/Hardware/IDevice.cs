@@ -1,8 +1,7 @@
 using System;
 using System.Device.Gpio;
-using LightControl.Api.Hardware;
 
-namespace LightControl.Api.Infrastructure
+namespace LightControl.Api.Hardware
 {
   // ToDo: Implement IDisposable
   public interface IDevice : IDisposable

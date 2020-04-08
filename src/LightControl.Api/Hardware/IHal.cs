@@ -1,7 +1,7 @@
 using System;
 using LightControl.Api.Models;
 
-namespace LightControl.Api.Infrastructure
+namespace LightControl.Api.Hardware
 {
   // ToDo: Implement IDisposable
   public interface IHal : IDisposable

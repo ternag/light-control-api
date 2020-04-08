@@ -1,7 +1,7 @@
 using System.Device.Gpio;
 using LightControl.Api.Models;
 
-namespace LightControl.Api.Infrastructure.Hardware
+namespace LightControl.Api.Hardware
 {
   public static class HardwareExtensions
   {
