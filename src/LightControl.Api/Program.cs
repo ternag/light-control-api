@@ -25,7 +25,7 @@ namespace LightControl.Api
       
       try
       {
-        Log.Information("Starting up");
+        Log.Information($"Starting up '{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}' environment");
         CreateHostBuilder(args).Build().Run();
       }
       catch (Exception ex)

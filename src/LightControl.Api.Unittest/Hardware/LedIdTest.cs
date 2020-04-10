@@ -2,11 +2,19 @@ using System;
 using FluentAssertions;
 using LightControl.Api.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace LightControl.Api.UnitTest.Hardware
 {
   public class PinIdTest
   {
+    private readonly ITestOutputHelper _outputHelper;
+
+    public PinIdTest(ITestOutputHelper outputHelper)
+    {
+      _outputHelper = outputHelper;
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(42)]
@@ -15,6 +23,16 @@ namespace LightControl.Api.UnitTest.Hardware
     {
       LedId sut = pinId;
       Assert.Equal(sut, pinId);
+    }
+
+    [Theory]
+    [InlineData("0", 0)]
+    [InlineData("0x20", 32)]
+    [InlineData("0xffff", 65535)]
+    public void GivenValidStringInput_CanCreate(string pinId, int expected)
+    {
+      LedId sut = pinId;
+      Assert.Equal(sut, expected);
     }
 
     [Fact]

@@ -1,4 +1,5 @@
 using System.Device.Gpio;
+using System.Device.Gpio.Drivers;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
@@ -9,7 +10,7 @@ namespace LightControl.Api.Hardware.Device
     private readonly ILogger _logger;
     GpioController _gpio;
 
-    public GpioDevice(ILogger logger)
+    public GpioDevice(ILogger logger )
     {
       _logger = logger;
       _gpio = new GpioController();

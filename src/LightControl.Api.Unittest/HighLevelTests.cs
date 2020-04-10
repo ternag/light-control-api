@@ -1,10 +1,13 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -18,14 +21,20 @@ namespace LightControl.Api.UnitTest
     public HighLevelTests(ITestOutputHelper outputHelper)
     {
       _outputHelper = outputHelper;
+      
+      var configuration = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.UnitTest.json", optional: false, reloadOnChange: true)
+        .Build();
+      
       var server = new TestServer(new WebHostBuilder()
         .UseEnvironment("Development")
         .UseStartup<Startup>()
+        .UseConfiguration(configuration)
         .ConfigureLogging(logging =>
         {
           logging.ClearProviders();
           logging.AddXUnit(outputHelper); // Route logging to xUnit output helper
-          logging.SetMinimumLevel(LogLevel.Error); // comment out to use default log level => info 
+          //logging.SetMinimumLevel(LogLevel.Error); // comment out to use default log level => info 
           //logging.SetMinimumLevel(LogLevel.Debug);
         }));
       _client = server.CreateClient();
@@ -47,9 +56,9 @@ namespace LightControl.Api.UnitTest
       var response = await _client.GetAsync("/api/led/3/_flick");
 
       // Assert
-      //response.EnsureSuccessStatusCode();
+      response.EnsureSuccessStatusCode();
       JsonDocument json = await GetJsonFromContent(response);
-
+      
       JsonElement id = json.RootElement.GetProperty("id");
       JsonElement state = json.RootElement.GetProperty("state");
       id.GetInt32().Should().Be(3);

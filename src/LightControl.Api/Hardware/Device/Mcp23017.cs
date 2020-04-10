@@ -14,11 +14,11 @@ namespace LightControl.Api.Hardware.Device
     private readonly Iot.Device.Mcp23xxx.Mcp23017 _device;
     private ushort _pinValues = 0x0;
 
-    public Mcp23017(Mcp23017Address address, ILogger logger)
+    // TODO: Create type for 'Bus'
+    public Mcp23017(Mcp23017Address address, ushort bus, ILogger logger)
     {
       _logger = logger;
-      Address = address;
-      I2cConnectionSettings settings = new I2cConnectionSettings(Bus, address);
+      I2cConnectionSettings settings = new I2cConnectionSettings(bus, address);
       I2cDevice device = I2cDevice.Create(settings);
       _device = new Iot.Device.Mcp23xxx.Mcp23017(device);
       _device.WriteUInt16(Register.IODIR, 0x0); // init all 16 pins to output
@@ -29,9 +29,6 @@ namespace LightControl.Api.Hardware.Device
     {
       // all pins are initialized in constructor for this device
     }
-
-    public Mcp23017Address Address { get; }
-    public int Bus => 1; // ToDo: Make configurable (Raspberry PI 3 uses Bus 1)  
 
     public void Write(PinNumber pin, PinValue value)
     {

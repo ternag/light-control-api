@@ -1,5 +1,7 @@
 #nullable enable
 using System;
+using System.Globalization;
+using LightControl.Api.Utils;
 
 namespace LightControl.Api.Models
 {
@@ -13,6 +15,7 @@ namespace LightControl.Api.Models
     private readonly ushort _value;
     public static implicit operator LedId(ushort value) => new LedId(value);
     public static implicit operator LedId(int value) => new LedId(Convert.ToUInt16(value));
+    public static implicit operator LedId(string value) => new LedId(Convert.ToUInt16(value, value.GetBase()));
     public static explicit operator ushort(LedId value) => value._value;
     public static explicit operator int(LedId value) => value._value;
 

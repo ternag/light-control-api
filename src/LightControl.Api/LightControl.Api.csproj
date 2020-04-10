@@ -16,5 +16,12 @@
         <PackageReference Include="System.Device.Gpio" Version="1.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="File\dummy_hardware.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 
 </Project>

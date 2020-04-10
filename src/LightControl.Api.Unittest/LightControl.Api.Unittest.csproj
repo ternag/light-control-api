@@ -24,8 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Hardware\hardware.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <None Update="File\dummy_hardware.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 

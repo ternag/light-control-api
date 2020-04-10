@@ -3,12 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
 {
-  // ToDo: Implement IDisposable
-  public class NoHardwareDevice : IDevice
+  public class DummyHardwareDevice : IDevice
   {
     private readonly ILogger _logger;
 
-    public NoHardwareDevice(ILogger logger)
+    public DummyHardwareDevice(ILogger logger)
     {
       _logger = logger;
     }
@@ -18,7 +17,7 @@ namespace LightControl.Api.Hardware.Device
       _logger.LogInformation($"Writing '{value}' to pin '{pin:x}'");
     }
 
-    public string DisplayName => "No hardware device";
+    public string DisplayName => "Dummy hardware device";
 
     public void InitPin(PinNumber pin)
     {

@@ -2,7 +2,8 @@
 {
   public static class DeviceType
   {
-    public static readonly string Gpio = "GPIO";
-    public static readonly string Mcp23017 = "MCP23017";
+    public const string Gpio = "gpio";
+    public const string Mcp23017 = "mcp23017";
+    public const string DummyDevice = "dummy_device";
   }
 }

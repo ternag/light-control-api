@@ -1,8 +1,7 @@
 ﻿{
   "devices": [
     {
-      "gpio": {
-        "deviceType": "gpio",
+        "deviceType": "dummy_device",
         "map": [
           { "id": "0", "pin": 4},
           { "id": "1", "pin": 17},
@@ -13,12 +12,9 @@
           { "id": "6", "pin": 13},
           { "id": "7", "pin": 19}
         ]
-      }
     },
     {
-      "mcp23017-1": 
-      {
-        "deviceType": "mcp23017",
+        "deviceType": "dummy_device",
         "deviceId": "0x20",
         "busId": "1",
         "map": [
@@ -40,6 +36,5 @@
           { "id": "0x1f", "pin": 15}
         ]
       }
-    }
   ]
 }

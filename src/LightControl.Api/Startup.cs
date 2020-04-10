@@ -34,21 +34,14 @@ namespace LightControl.Api
       services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
       services.AddSingleton<ILedContext, LedContext>();
       services.AddSingleton<IHardwareContext, HardwareContext>();
-      services.AddSingleton<IHardwareConfigurationLoader, HardwareConfigurationLoader>();
-
-      // Registre Hardware Abstraction Layer dependent on environment
-      if (_env.IsDevelopment())
-      {
-        services.AddSingleton<IHardwareConfigurationFactory, NoHardwareConfigurationFactory>();
-      }
-      else
-      {
-        services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
-      }
+      services.AddSingleton<IHardwareFileParser, HardwareFileParser>();
+      services.AddSingleton<IHardwareInfoMapper, HardwareInfoMapper>();
+      services.AddSingleton<IHardwareDeviceFactory, HardwareDeviceFactory>();
+      services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app)
+    public void Configure(IApplicationBuilder app, ILogger<Startup> logger)
     {
       if (_env.IsDevelopment())
       {
