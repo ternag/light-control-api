@@ -4,7 +4,6 @@ using LightControl.Api.Models;
 
 namespace LightControl.Api.Hardware
 {
-  // ToDo: Implement IDisposable (dispose devices)
   public interface IHardwareConfiguration : IDisposable
   {
     IDevice GetDevice(LedId id);
@@ -15,7 +14,6 @@ namespace LightControl.Api.Hardware
   {
     public HardwareConfiguration(Dictionary<LedId, IDevice> devices, Dictionary<LedId, PinNumber> pins)
     {
-      // TODO: Inject hardware configuration via constructor
       _devices = devices;
       _pins = pins;
     }

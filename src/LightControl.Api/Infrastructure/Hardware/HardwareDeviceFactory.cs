@@ -1,9 +1,9 @@
 ﻿using System;
+using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.Device;
-using LightControl.Api.Infrastructure.Hardware;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Hardware
+namespace LightControl.Api.Infrastructure.Hardware
 {
   public class HardwareDeviceFactory : IHardwareDeviceFactory
   {

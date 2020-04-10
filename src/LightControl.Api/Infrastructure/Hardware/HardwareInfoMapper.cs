@@ -13,7 +13,7 @@ namespace LightControl.Api.Infrastructure.Hardware
       _hardwareDeviceFactory = hardwareDeviceFactory;
     }
 
-    public Dictionary<LedId, IDevice> GetDevices(HardwareInfo hardwareInfo)
+    public Dictionary<LedId, IDevice> GetDevices(IHardwareInfo hardwareInfo)
     {
       var devices = new Dictionary<LedId, IDevice>();
 
@@ -30,7 +30,7 @@ namespace LightControl.Api.Infrastructure.Hardware
       return devices;
     }
 
-    public Dictionary<LedId, PinNumber> GetPins(HardwareInfo hardwareInfo)
+    public Dictionary<LedId, PinNumber> GetPins(IHardwareInfo hardwareInfo)
     {
       var pins = new Dictionary<LedId, PinNumber>();
       

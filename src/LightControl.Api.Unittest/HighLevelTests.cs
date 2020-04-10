@@ -47,7 +47,7 @@ namespace LightControl.Api.UnitTest
       state.GetInt32().Should().Be(1);
     }
 
-    [Fact]
+    [Fact(Skip = "Until implemented")]
     public async Task ApiRootShouldRespondOk()
     {
       // Act

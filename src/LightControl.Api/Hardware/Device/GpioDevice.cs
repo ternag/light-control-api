@@ -1,10 +1,8 @@
 using System.Device.Gpio;
-using System.Device.Gpio.Drivers;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
 {
-  // ToDo: Implement IDisposable
   public class GpioDevice : IDevice
   {
     private readonly ILogger _logger;
@@ -25,7 +23,7 @@ namespace LightControl.Api.Hardware.Device
     public void Write(PinNumber pin, PinValue value)
     {
       _logger.LogDebug($"Writing {value} to pin {pin}");
-      _gpio.OpenPin((int) pin, PinMode.Output); // TODO: Remove, when HardwareConfigurationFactory works.
+      //_gpio.OpenPin((int) pin, PinMode.Output); // TODO: Remove, when HardwareConfigurationFactory works.
       // Devices is created every time GetDevices are called !
       _gpio.Write((int) pin, value);
     }
