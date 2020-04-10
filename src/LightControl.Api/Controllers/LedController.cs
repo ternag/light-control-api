@@ -38,7 +38,6 @@ namespace LightControl.Api.Controllers
     public ActionResult<LedDto> Get(ushort id)
     {
       _logger.LogInformation($"Getting LED {id}");
-      // TODO: Create dto for the Led class
       return CatchExceptions(() => _ledContext.Get(id).ToDto());
     }
 
@@ -61,7 +60,6 @@ namespace LightControl.Api.Controllers
     public ActionResult<LedDto> Flick(ushort id)
     {
       _logger.LogInformation($"Flicking LED {id}");
-
       return CatchExceptions(() => FlickAndUpdate(id).ToDto());
     }
 
@@ -76,7 +74,7 @@ namespace LightControl.Api.Controllers
     {
       try
       {
-        return (T) method();
+        return method();
       }
       catch (ArgumentException ae)
       {

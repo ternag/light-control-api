@@ -8,14 +8,14 @@ namespace LightControl.Api.Controllers
   [Route("/api/[controller]")]
   public class ResetController : Controller
   {
-    private IHardwareContext _hardwareContext;
+    private readonly IHardwareContext _hardwareContext;
 
     public ResetController(IHardwareContext hardwareContext)
     {
       _hardwareContext = hardwareContext;
     }
 
-    // GET
+    [HttpGet]
     public IActionResult Index()
     {
       _hardwareContext.ReloadHardwareConfiguration();

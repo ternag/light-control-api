@@ -1,13 +1,10 @@
-﻿using System;
+﻿using System.Collections;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
+using LightControl.Api.UnitTest.TestUtils;
 using Microsoft.Extensions.Logging;
-using Serilog;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -21,22 +18,7 @@ namespace LightControl.Api.UnitTest
     public HighLevelTests(ITestOutputHelper outputHelper)
     {
       _outputHelper = outputHelper;
-      
-      var configuration = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.UnitTest.json", optional: false, reloadOnChange: true)
-        .Build();
-      
-      var server = new TestServer(new WebHostBuilder()
-        .UseEnvironment("Development")
-        .UseStartup<Startup>()
-        .UseConfiguration(configuration)
-        .ConfigureLogging(logging =>
-        {
-          logging.ClearProviders();
-          logging.AddXUnit(outputHelper); // Route logging to xUnit output helper
-          //logging.SetMinimumLevel(LogLevel.Error); // comment out to use default log level => info 
-          //logging.SetMinimumLevel(LogLevel.Debug);
-        }));
+      var server = TestServerFactory.Create(outputHelper, LogLevel.Error);
       _client = server.CreateClient();
     }
 
@@ -65,11 +47,55 @@ namespace LightControl.Api.UnitTest
       state.GetInt32().Should().Be(1);
     }
 
+    [Fact]
+    public async Task ApiRootShouldRespondOk()
+    {
+      // Act
+      var response = await _client.GetAsync("/api/");
+      
+      // Assert
+      response.EnsureSuccessStatusCode();
+    }
+    
+    [Fact]
+    public async Task LedShouldRespondWithLedStatus()
+    {
+      // Act
+      var response = await _client.GetAsync("/api/led/2");
+      
+      // Assert
+      response.EnsureSuccessStatusCode();
+      JsonDocument json = await GetJsonFromContent(response);
+      
+      JsonElement id = json.RootElement.GetProperty("id");
+      JsonElement state = json.RootElement.GetProperty("state");
+      id.GetInt32().Should().Be(2);
+      state.GetInt32().Should().Be(0);
+    }
+    
+    [Fact]
+    public async Task GetAllLedShouldRespondWithListOfLeds()
+    {
+      // Act
+      var response = await _client.GetAsync("/api/led");
+      
+      // Assert
+      response.EnsureSuccessStatusCode();
+      JsonDocument json = await GetJsonFromContent(response);
+      json.RootElement.ValueKind.Should().Be(JsonValueKind.Array);
+      json.RootElement.EnumerateArray().Should().HaveCount(24);
+    }
+
+    
+    
     private async Task<JsonDocument> GetJsonFromContent(HttpResponseMessage response)
     {
       var responseString = await response.Content.ReadAsStringAsync();
-      _outputHelper.WriteLine(responseString);
-      return JsonDocument.Parse(responseString);
+      //_outputHelper.WriteLine(responseString);
+      var responseJson = JsonDocument.Parse(responseString);
+      _outputHelper.WriteLine(responseJson.ToFormatedString());
+      return responseJson;
     }
+
   }
 }

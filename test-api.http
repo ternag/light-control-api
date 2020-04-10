@@ -2,13 +2,14 @@
 @host = http://localhost:5000
 @api = {{host}}/api
 
-GET {{api}}
+GET {{host}}
 
 ###
 GET {{api}}/led
 
 ###
-GET {{api}}/api/reset
+GET {{api}}/reset
+
 
 ###
 
