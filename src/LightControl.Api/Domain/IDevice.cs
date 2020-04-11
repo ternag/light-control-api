@@ -1,11 +1,10 @@
 using System;
-using System.Device.Gpio;
 
-namespace LightControl.Api.Hardware
+namespace LightControl.Api.Domain
 {
   public interface IDevice : IDisposable
   {
-    void Write(PinNumber pin, PinValue value);
+    void Write(PinNumber pin, LedState value);
     string DisplayName { get; }
     void InitPin(PinNumber pin);
   }

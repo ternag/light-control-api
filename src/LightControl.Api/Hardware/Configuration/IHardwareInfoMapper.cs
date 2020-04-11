@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using LightControl.Api.Models;
+using LightControl.Api.Domain;
 
 namespace LightControl.Api.Hardware.Configuration
 {

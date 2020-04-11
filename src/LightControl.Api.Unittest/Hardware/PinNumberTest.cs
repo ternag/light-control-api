@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using LightControl.Api.Domain;
 using LightControl.Api.Hardware;
 using Xunit;
 

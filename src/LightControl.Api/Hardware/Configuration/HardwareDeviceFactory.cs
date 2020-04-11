@@ -1,4 +1,5 @@
 ﻿using System;
+using LightControl.Api.Domain;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 using LightControl.Api.Hardware.Device;
 using Microsoft.Extensions.Logging;

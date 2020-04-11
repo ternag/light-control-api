@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LightControl.Api.Domain;
 using Microsoft.Extensions.Logging;
-using LightControl.Api.Models;
 
 namespace LightControl.Api.Infrastructure
 {

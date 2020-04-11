@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using LightControl.Api.Models;
 
-namespace LightControl.Api.Infrastructure
+namespace LightControl.Api.Domain
 {
   public interface ILedContext
   {

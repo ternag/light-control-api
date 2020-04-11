@@ -3,10 +3,10 @@ using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LightControl.Api.Domain;
 using LightControl.Api.Hardware;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using LightControl.Api.Models;
 using LightControl.Api.Infrastructure;
 
 namespace LightControl.Api.Controllers

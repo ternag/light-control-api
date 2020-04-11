@@ -1,4 +1,5 @@
-﻿using LightControl.Api.Hardware.Configuration;
+﻿using LightControl.Api.Domain;
+using LightControl.Api.Hardware.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware

@@ -1,4 +1,5 @@
-﻿using LightControl.Api.Hardware.ConfigurationTransferModel;
+﻿using LightControl.Api.Domain;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 
 namespace LightControl.Api.Hardware.Configuration
 {

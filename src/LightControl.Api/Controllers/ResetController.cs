@@ -1,4 +1,5 @@
 ﻿using System;
+using LightControl.Api.Domain;
 using LightControl.Api.Hardware;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,4 +1,4 @@
-﻿namespace LightControl.Api.Hardware
+﻿namespace LightControl.Api.Domain
 {
   public interface IHardwareContext
   {

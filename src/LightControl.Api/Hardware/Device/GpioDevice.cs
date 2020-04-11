@@ -1,4 +1,6 @@
 using System.Device.Gpio;
+using LightControl.Api.Domain;
+using LightControl.Api.Hardware.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
@@ -20,12 +22,12 @@ namespace LightControl.Api.Hardware.Device
       _gpio.Write((int) pin, PinValue.Low);
     }
 
-    public void Write(PinNumber pin, PinValue value)
+    public void Write(PinNumber pin, LedState value)
     {
       _logger.LogDebug($"Writing {value} to pin {pin}");
       _gpio.OpenPin((int) pin, PinMode.Output); // TODO: Remove, when HardwareConfigurationFactory works.
       // Devices is created every time GetDevices are called !
-      _gpio.Write((int) pin, value);
+      _gpio.Write((int) pin, value.ToPinValue());
     }
 
     public string DisplayName => "Gpio";

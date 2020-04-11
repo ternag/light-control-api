@@ -1,4 +1,4 @@
-namespace LightControl.Api.Models
+namespace LightControl.Api.Domain
 {
   public class Led
   {

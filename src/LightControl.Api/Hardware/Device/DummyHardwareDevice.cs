@@ -1,10 +1,12 @@
-﻿using System.Device.Gpio;
+﻿using LightControl.Api.Domain;
+using LightControl.Api.Hardware.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
 {
   /// <summary>
-  /// This 
+  /// The purpose of this class is to be used for development and
+  /// testing on systems that do not support the System.Device.Gpio devices.
   /// </summary>
   public class DummyHardwareDevice : IDevice
   {
@@ -15,9 +17,9 @@ namespace LightControl.Api.Hardware.Device
       _logger = logger;
     }
 
-    public void Write(PinNumber pin, PinValue value)
+    public void Write(PinNumber pin, LedState value)
     {
-      _logger.LogInformation($"Writing '{value}' to pin '{pin:x}'");
+      _logger.LogInformation($"Writing '{value.ToPinValue()}' to pin '{pin:x}'");
     }
 
     public string DisplayName => "Dummy hardware device";
@@ -29,7 +31,7 @@ namespace LightControl.Api.Hardware.Device
 
     public void Dispose()
     {
-      // Nothing to see here. Move along.
+      // You can go about your business. Move along.
     }
   }
 }

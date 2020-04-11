@@ -1,6 +1,5 @@
+using LightControl.Api.Domain;
 using LightControl.Api.Hardware.Configuration;
-using LightControl.Api.Hardware.Extensions;
-using LightControl.Api.Models;
 
 namespace LightControl.Api.Hardware
 {
@@ -17,7 +16,7 @@ namespace LightControl.Api.Hardware
     {
       IDevice device = _hardwareConfiguration.GetDevice(led.Id);
       var pin = _hardwareConfiguration.GetPin(led.Id);
-      device.Write(pin, led.State.ToPinValue());
+      device.Write(pin, led.State);
     }
 
     public void Dispose()

@@ -1,4 +1,4 @@
-﻿using LightControl.Api.Models;
+﻿using LightControl.Api.Domain;
 
 namespace LightControl.Api.Infrastructure
 {

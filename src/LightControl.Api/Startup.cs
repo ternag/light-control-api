@@ -1,3 +1,4 @@
+using LightControl.Api.Domain;
 using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.Configuration;
 using Microsoft.AspNetCore.Builder;

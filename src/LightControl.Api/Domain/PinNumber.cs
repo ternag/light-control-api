@@ -1,6 +1,6 @@
 using System;
 
-namespace LightControl.Api.Hardware
+namespace LightControl.Api.Domain
 {
   public readonly struct PinNumber : IEquatable<PinNumber>, IFormattable
   {

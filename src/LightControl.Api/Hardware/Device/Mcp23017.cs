@@ -3,6 +3,8 @@ using System.Collections;
 using System.Device.Gpio;
 using System.Device.I2c;
 using Iot.Device.Mcp23xxx;
+using LightControl.Api.Domain;
+using LightControl.Api.Hardware.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
@@ -30,14 +32,14 @@ namespace LightControl.Api.Hardware.Device
       // all pins are initialized in constructor for this device
     }
 
-    public void Write(PinNumber pin, PinValue value)
+    public void Write(PinNumber pin, LedState value)
     {
       if (pin > 15)
         throw new ArgumentException(
           $"The Mcp23017 device can only handle pin number between 0 and 15. Provided PinNumber was {pin}");
 
       _logger.LogDebug($"Setting pin {pin:x} to {value}");
-      _pinValues = SetBit(_pinValues, (ushort) pin, (bool) value);
+      _pinValues = SetBit(_pinValues, (ushort) pin,  (bool) value.ToPinValue());
       _device.WriteUInt16(Register.GPIO, _pinValues);
     }
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using LightControl.Api.Models;
+using LightControl.Api.Domain;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 

@@ -1,9 +1,8 @@
 #nullable enable
 using System;
-using System.Globalization;
 using LightControl.Api.Utils;
 
-namespace LightControl.Api.Models
+namespace LightControl.Api.Domain
 {
   public readonly struct LedId : IEquatable<LedId>, IComparable<LedId>, IFormattable
   {
