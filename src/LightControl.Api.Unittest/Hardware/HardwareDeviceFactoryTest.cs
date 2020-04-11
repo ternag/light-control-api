@@ -23,12 +23,6 @@ namespace LightControl.Api.UnitTest.Hardware
     }
 
     [Fact]
-    public void Test()
-    {
-      _outputHelper.WriteLine(_fixture.Create<MapInfo>().Id);
-    }
-    
-    [Fact]
     public void NoHardwareDevice_IsCreated()
     {
       var sut = _fixture.Create<HardwareDeviceFactory>();
