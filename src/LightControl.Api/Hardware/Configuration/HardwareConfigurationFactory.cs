@@ -12,8 +12,7 @@ namespace LightControl.Api.Hardware.Configuration
     private readonly IOptions<HardwareOptions> _options;
     private readonly IHardwareFileParser _fileParser;
     private readonly IHardwareInfoMapper _mapper;
-    private Dictionary<LedId, IDevice> _devices;
-    private Dictionary<LedId, PinNumber> _pins;
+    private Dictionary<LedId, Pin> _pins;
 
     public HardwareConfigurationFactory(ILogger<HardwareConfigurationFactory> logger, IOptions<HardwareOptions> options, IHardwareFileParser fileParser, IHardwareInfoMapper mapper)
     {
@@ -28,16 +27,18 @@ namespace LightControl.Api.Hardware.Configuration
     {
       var configurationFilepath = new FileInfo(_options.Value.ConfigurationFilepath);
       var hardwareInfo = _fileParser.Parse(configurationFilepath);
-      _devices = _mapper.GetDevices(hardwareInfo);
       _pins = _mapper.GetPins(hardwareInfo);
-      // TODO: Init Pins on devices
+      foreach (var (_, pin) in _pins)
+      {
+        pin.Init();
+      }
     }
 
     public IHardwareConfiguration Create()
     {
       _logger.LogInformation($"Hardware config filepath {_options.Value.ConfigurationFilepath}");
       Init();
-      return new HardwareConfiguration(_devices, _pins);
+      return new HardwareConfiguration(_pins);
     }
   }
 }

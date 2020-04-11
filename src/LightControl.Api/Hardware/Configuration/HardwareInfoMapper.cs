@@ -13,32 +13,17 @@ namespace LightControl.Api.Hardware.Configuration
       _hardwareDeviceFactory = hardwareDeviceFactory;
     }
 
-    public Dictionary<LedId, IDevice> GetDevices(IHardwareInfo hardwareInfo)
+    public Dictionary<LedId, Pin> GetPins(IHardwareInfo hardwareInfo)
     {
-      var devices = new Dictionary<LedId, IDevice>();
-
-      foreach (DeviceInfo device in hardwareInfo.Devices)
-      {
-        IDevice concreteDevice = _hardwareDeviceFactory.Create(device);
-        
-        foreach (MapInfo mapInfo in device.Map)
-        {
-          devices.Add(mapInfo.Id, concreteDevice);
-        }
-      }
-      
-      return devices;
-    }
-
-    public Dictionary<LedId, PinNumber> GetPins(IHardwareInfo hardwareInfo)
-    {
-      var pins = new Dictionary<LedId, PinNumber>();
+      var pins = new Dictionary<LedId, Pin>();
       
       foreach(DeviceInfo device in hardwareInfo.Devices)
       {
+        IDevice concreteDevice = _hardwareDeviceFactory.Create(device);
+
         foreach (MapInfo mapInfo in device.Map)
         {
-          pins.Add(mapInfo.Id, mapInfo.Pin);
+          pins.Add(mapInfo.Id, new Pin(mapInfo.Pin, concreteDevice));
         }
       }
 

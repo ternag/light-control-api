@@ -2,7 +2,6 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
 using FluentAssertions;
-using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.Configuration;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 using Xunit;
@@ -26,15 +25,6 @@ namespace LightControl.Api.UnitTest.Hardware
       pins.Count.Should().Be(8);
     }
 
-    [Fact]
-    public void GivenSpecificHardwareInfo_ExpectToGetTwoDeviceConfigurations()
-    {
-      
-      HardwareInfoMapper sut = _fixture.Create<HardwareInfoMapper>(); 
-      var devices = sut.GetDevices(TestData);
-      devices.Count.Should().Be(8);
-    }
-    
     private HardwareInfo TestData => new HardwareInfo
     {
       Devices = new DeviceInfo[]

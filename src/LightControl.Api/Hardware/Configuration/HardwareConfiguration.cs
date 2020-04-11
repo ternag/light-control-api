@@ -4,46 +4,28 @@ using LightControl.Api.Domain;
 
 namespace LightControl.Api.Hardware.Configuration
 {
-  public interface IHardwareConfiguration : IDisposable
-  {
-    IDevice GetDevice(LedId id);
-    PinNumber GetPin(LedId id);
-  }
-
   public class HardwareConfiguration : IHardwareConfiguration
   {
-    public HardwareConfiguration(Dictionary<LedId, IDevice> devices, Dictionary<LedId, PinNumber> pins)
+    public HardwareConfiguration(Dictionary<LedId, Pin> pins2)
     {
-      _devices = devices;
-      _pins = pins;
+      _pins2 = pins2 ?? throw new ArgumentNullException(nameof(pins2));
     }
 
-    private readonly Dictionary<LedId, IDevice> _devices;
-    private readonly Dictionary<LedId, PinNumber> _pins;
+    private readonly Dictionary<LedId, Pin> _pins2;
 
-    public IDevice GetDevice(LedId id)
+    public Pin GetPin(LedId id)
     {
-      if (_devices.ContainsKey(id))
-        return _devices[id];
+      if (_pins2.ContainsKey(id))
+        return _pins2[id];
       else
         throw new ArgumentException(
           $"The LedId '{id}' is unknown. Make sure the id is registered in the hardware configuration");
     }
-
-    public PinNumber GetPin(LedId id)
-    {
-      if (_pins.ContainsKey(id))
-        return _pins[id];
-      else
-        throw new ArgumentException(
-          $"The LedId '{id}' is unknown. Make sure the id is registered in the hardware configuration");
-    }
-
     public void Dispose()
     {
-      foreach (var pair in _devices)
+      foreach (KeyValuePair<LedId, Pin> pair in _pins2)
       {
-        pair.Value?.Dispose();
+        pair.Value?.Device?.Dispose();
       }
     }
   }

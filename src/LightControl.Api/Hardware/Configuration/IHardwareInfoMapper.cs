@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using LightControl.Api.Domain;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 
 namespace LightControl.Api.Hardware.Configuration
 {
   public interface IHardwareInfoMapper
   {
-    Dictionary<LedId, IDevice> GetDevices(IHardwareInfo hardwareInfo);
-    Dictionary<LedId, PinNumber> GetPins(IHardwareInfo hardwareInfo);
+    Dictionary<LedId, Pin> GetPins(IHardwareInfo hardwareInfo);
   }
 }

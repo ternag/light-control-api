@@ -19,7 +19,7 @@ namespace LightControl.Api.Controllers
     private readonly ILedContext _ledContext;
     private readonly IHardwareContext _hardwareContext;
 
-    public LedController(ILedContext ledContext, ILogger logger, IHardwareContext hardwareContext)
+    public LedController(ILedContext ledContext, ILogger<LedController> logger, IHardwareContext hardwareContext)
     {
       _logger = logger;
       _ledContext = ledContext;
@@ -78,10 +78,12 @@ namespace LightControl.Api.Controllers
       }
       catch (ArgumentException ae)
       {
+        _logger.LogError(ae, ae.Message);
         return NotFound(ae.Message);
       }
       catch (Exception e)
       {
+        _logger.LogError(e, e.Message);
         return BadRequest(e.Message);
       }
     }
