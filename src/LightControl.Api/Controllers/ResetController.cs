@@ -18,6 +18,7 @@ namespace LightControl.Api.Controllers
     public IActionResult Index()
     {
       _hardwareContext.ReloadHardwareConfiguration();
+      // TODO: Also reset LedContext
       return Ok();
     }
   }
