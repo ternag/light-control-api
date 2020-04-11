@@ -1,9 +1,9 @@
 ﻿using System;
-using LightControl.Api.Hardware;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 using LightControl.Api.Hardware.Device;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure.Hardware
+namespace LightControl.Api.Hardware.Configuration
 {
   public class HardwareDeviceFactory : IHardwareDeviceFactory
   {

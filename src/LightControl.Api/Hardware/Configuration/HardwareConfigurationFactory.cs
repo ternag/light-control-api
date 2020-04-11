@@ -4,7 +4,7 @@ using LightControl.Api.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace LightControl.Api.Hardware
+namespace LightControl.Api.Hardware.Configuration
 {
   public class HardwareConfigurationFactory : IHardwareConfigurationFactory
   {
@@ -30,6 +30,7 @@ namespace LightControl.Api.Hardware
       var hardwareInfo = _fileParser.Parse(configurationFilepath);
       _devices = _mapper.GetDevices(hardwareInfo);
       _pins = _mapper.GetPins(hardwareInfo);
+      // TODO: Init Pins on devices
     }
 
     public IHardwareConfiguration Create()

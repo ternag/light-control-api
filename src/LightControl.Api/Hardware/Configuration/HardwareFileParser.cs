@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
-using LightControl.Api.Hardware;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure.Hardware
+namespace LightControl.Api.Hardware.Configuration
 {
   public class HardwareFileParser : IHardwareFileParser
   {

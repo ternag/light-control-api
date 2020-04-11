@@ -16,9 +16,9 @@ namespace LightControl.Api.Controllers
     }
 
     [HttpGet]
-    public ActionResult<Info> Get()
+    public ActionResult<AppInfo> Get()
     {
-      return new Info();
+      return new AppInfo();
     }
   }
 }

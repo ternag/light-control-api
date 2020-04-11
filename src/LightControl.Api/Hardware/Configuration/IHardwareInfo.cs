@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using LightControl.Api.Infrastructure.Hardware;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 
-namespace LightControl.Api.Hardware
+namespace LightControl.Api.Hardware.Configuration
 {
   public interface IHardwareInfo
   {

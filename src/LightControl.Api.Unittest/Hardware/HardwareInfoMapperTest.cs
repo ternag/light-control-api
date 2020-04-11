@@ -3,7 +3,8 @@ using AutoFixture;
 using AutoFixture.AutoMoq;
 using FluentAssertions;
 using LightControl.Api.Hardware;
-using LightControl.Api.Infrastructure.Hardware;
+using LightControl.Api.Hardware.Configuration;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 using Xunit;
 
 namespace LightControl.Api.UnitTest.Hardware

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using LightControl.Api.Hardware;
+using LightControl.Api.Hardware.ConfigurationTransferModel;
 using LightControl.Api.Models;
 
-namespace LightControl.Api.Infrastructure.Hardware
+namespace LightControl.Api.Hardware.Configuration
 {
   public class HardwareInfoMapper : IHardwareInfoMapper
   {

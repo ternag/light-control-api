@@ -1,3 +1,5 @@
+using LightControl.Api.Hardware.Configuration;
+using LightControl.Api.Hardware.Extensions;
 using LightControl.Api.Models;
 
 namespace LightControl.Api.Hardware

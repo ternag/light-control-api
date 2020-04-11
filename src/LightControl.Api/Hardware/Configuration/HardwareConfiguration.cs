@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using LightControl.Api.Models;
 
-namespace LightControl.Api.Hardware
+namespace LightControl.Api.Hardware.Configuration
 {
   public interface IHardwareConfiguration : IDisposable
   {

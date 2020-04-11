@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using LightControl.Api.Utils;
 
-namespace LightControl.Api.Infrastructure.Hardware
+namespace LightControl.Api.Hardware.ConfigurationTransferModel
 {
   public class DeviceInfo
   {

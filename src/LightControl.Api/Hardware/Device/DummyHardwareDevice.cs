@@ -3,6 +3,9 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
 {
+  /// <summary>
+  /// This 
+  /// </summary>
   public class DummyHardwareDevice : IDevice
   {
     private readonly ILogger _logger;
@@ -26,7 +29,7 @@ namespace LightControl.Api.Hardware.Device
 
     public void Dispose()
     {
-      // Nothing to se here. Move along.
+      // Nothing to see here. Move along.
     }
   }
 }

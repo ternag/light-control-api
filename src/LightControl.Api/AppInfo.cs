@@ -1,6 +1,6 @@
-﻿namespace LightControl.Api.Models
+﻿namespace LightControl.Api
 {
-  public class Info
+  public class AppInfo
   {
     public string State => "Green";
     public string Version => "0.0.0.18";
