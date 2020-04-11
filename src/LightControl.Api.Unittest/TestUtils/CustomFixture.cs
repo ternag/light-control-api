@@ -1,7 +1,6 @@
 ﻿using System;
 using AutoFixture;
 using AutoFixture.AutoMoq;
-using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 
 namespace LightControl.Api.UnitTest.TestUtils

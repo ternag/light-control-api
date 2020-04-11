@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
 using LightControl.Api.Domain;
-using LightControl.Api.Hardware;
 using Xunit;
 
 namespace LightControl.Api.UnitTest.Hardware

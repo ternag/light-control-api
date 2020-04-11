@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using AutoFixture;
 using FluentAssertions;
-using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.Configuration;
 using LightControl.Api.UnitTest.TestUtils;
 using Xunit;

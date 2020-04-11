@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Device.Gpio;
 using System.Device.I2c;
 using Iot.Device.Mcp23xxx;
 using LightControl.Api.Domain;
@@ -9,7 +8,6 @@ using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Hardware.Device
 {
-  // ToDo: Implement IDisposable
   public class Mcp23017 : IDevice
   {
     private readonly ILogger _logger;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LightControl.Api.Utils
+﻿namespace LightControl.Api.Utils
 {
   public static class NumberUtil
   {

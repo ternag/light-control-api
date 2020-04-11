@@ -14,7 +14,10 @@ namespace LightControl.Api.Hardware.Configuration
     private readonly IHardwareInfoMapper _mapper;
     private Dictionary<LedId, Pin> _pins;
 
-    public HardwareConfigurationFactory(ILogger<HardwareConfigurationFactory> logger, IOptions<HardwareOptions> options, IHardwareFileParser fileParser, IHardwareInfoMapper mapper)
+    public HardwareConfigurationFactory(ILogger<HardwareConfigurationFactory> logger, 
+      IOptions<HardwareOptions> options, 
+      IHardwareFileParser fileParser, 
+      IHardwareInfoMapper mapper)
     {
       _logger = logger;
       _options = options;

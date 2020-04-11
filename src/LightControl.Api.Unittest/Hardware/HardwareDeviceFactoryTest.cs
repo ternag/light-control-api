@@ -2,7 +2,6 @@
 using System.Linq;
 using AutoFixture;
 using FluentAssertions;
-using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.Configuration;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 using LightControl.Api.Hardware.Device;
