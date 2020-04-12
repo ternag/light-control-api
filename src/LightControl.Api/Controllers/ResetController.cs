@@ -22,4 +22,4 @@ namespace LightControl.Api.Controllers
       return Ok();
     }
   }
-}
+} 

@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LightControl.Api.Domain;
 using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Infrastructure
+namespace LightControl.Api.Domain
 {
   public class LedContext : ILedContext
   {
@@ -25,22 +24,22 @@ namespace LightControl.Api.Infrastructure
         new Led(5, "Nr. 6", LedState.Off),
         new Led(6, "Nr. 7", LedState.Off),
         new Led(7, "Nr. 8", LedState.Off),
-        new Led(8, "Nr. 1, mcp23017", LedState.Off),
-        new Led(9, "Nr. 2, mcp23017", LedState.Off),
-        new Led(10, "Nr. 3, mcp23017", LedState.Off),
-        new Led(11, "Nr. 4, mcp23017", LedState.Off),
-        new Led(12, "Nr. 5, mcp23017", LedState.Off),
-        new Led(13, "Nr. 6, mcp23017", LedState.Off),
-        new Led(14, "Nr. 7, mcp23017", LedState.Off),
-        new Led(15, "Nr. 8, mcp23017", LedState.Off),
-        new Led(16, "Nr. 9, mcp23017", LedState.Off),
-        new Led(17, "Nr. 10, mcp23017", LedState.Off),
-        new Led(18, "Nr. 11, mcp23017", LedState.Off),
-        new Led(19, "Nr. 12, mcp23017", LedState.Off),
-        new Led(20, "Nr. 13, mcp23017", LedState.Off),
-        new Led(21, "Nr. 14, mcp23017", LedState.Off),
-        new Led(22, "Nr. 15, mcp23017", LedState.Off),
-        new Led(23, "Nr. 16, mcp23017", LedState.Off),
+        new Led(0x10, "Nr. 1, mcp23017", LedState.Off),
+        new Led(0x11, "Nr. 2, mcp23017", LedState.Off),
+        new Led(0x12, "Nr. 3, mcp23017", LedState.Off),
+        new Led(0x13, "Nr. 4, mcp23017", LedState.Off),
+        new Led(0x14, "Nr. 5, mcp23017", LedState.Off),
+        new Led(0x15, "Nr. 6, mcp23017", LedState.Off),
+        new Led(0x16, "Nr. 7, mcp23017", LedState.Off),
+        new Led(0x17, "Nr. 8, mcp23017", LedState.Off),
+        new Led(0x18, "Nr. 9, mcp23017", LedState.Off),
+        new Led(0x19, "Nr. 10, mcp23017", LedState.Off),
+        new Led(0x1a, "Nr. 11, mcp23017", LedState.Off),
+        new Led(0x1b, "Nr. 12, mcp23017", LedState.Off),
+        new Led(0x1c, "Nr. 13, mcp23017", LedState.Off),
+        new Led(0x1d, "Nr. 14, mcp23017", LedState.Off),
+        new Led(0x1e, "Nr. 15, mcp23017", LedState.Off),
+        new Led(0x1f, "Nr. 16, mcp23017", LedState.Off),
       };
     }
 
