@@ -15,7 +15,7 @@ namespace LightControl.Api.Hardware
     public void Update(Led led)
     {
       var pin = _hardwareConfiguration.GetPin(led.Id);
-      pin.Device.Write(pin.PinNumber, led.State);
+      pin.Device.Write(pin.PinNumber, led.State); // ToDo: Create SetState method on Pin and hide Device
     }
 
     public void Dispose()
