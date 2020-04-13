@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Device.I2c;
 using Iot.Device.Mcp23xxx;
-using LightControl.Api.Domain;
+using LightControl.Api.AppModel;
 using LightControl.Api.Hardware.Extensions;
 using Microsoft.Extensions.Logging;
 

@@ -1,4 +1,4 @@
-﻿using LightControl.Api.Domain;
+﻿using LightControl.Api.AppModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LightControl.Api.Controllers

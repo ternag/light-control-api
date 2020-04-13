@@ -1,5 +1,5 @@
 using System.Device.Gpio;
-using LightControl.Api.Domain;
+using LightControl.Api.AppModel;
 
 namespace LightControl.Api.Hardware.Extensions
 {

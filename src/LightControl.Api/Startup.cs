@@ -1,4 +1,4 @@
-using LightControl.Api.Domain;
+using LightControl.Api.AppModel;
 using LightControl.Api.Hardware;
 using LightControl.Api.Hardware.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using LightControl.Api.Infrastructure;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;

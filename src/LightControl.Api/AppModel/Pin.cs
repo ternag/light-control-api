@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LightControl.Api.Domain
+namespace LightControl.Api.AppModel
 {
   public class Pin
   {

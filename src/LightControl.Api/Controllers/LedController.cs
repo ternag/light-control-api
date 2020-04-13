@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LightControl.Api.Domain;
+using LightControl.Api.AppModel;
+using LightControl.Api.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using LightControl.Api.Infrastructure;
 
 namespace LightControl.Api.Controllers
 {

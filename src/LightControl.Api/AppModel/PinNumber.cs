@@ -1,10 +1,10 @@
 using System;
 
-namespace LightControl.Api.Domain
+namespace LightControl.Api.AppModel
 {
   public readonly struct PinNumber : IEquatable<PinNumber>, IFormattable
   {
-    public PinNumber(ushort value)
+    private PinNumber(ushort value)
     {
       _value = value;
     }

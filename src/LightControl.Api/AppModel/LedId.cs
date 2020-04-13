@@ -2,11 +2,12 @@
 using System;
 using LightControl.Api.Utils;
 
-namespace LightControl.Api.Domain
+namespace LightControl.Api.AppModel
 {
+  // TODO: Rename LedId to LightId (?)
   public readonly struct LedId : IEquatable<LedId>, IComparable<LedId>, IFormattable
   {
-    public LedId(ushort value)
+    private LedId(ushort value)
     {
       _value = value;
     }

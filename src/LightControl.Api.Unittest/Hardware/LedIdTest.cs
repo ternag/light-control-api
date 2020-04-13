@@ -1,6 +1,6 @@
 using System;
 using FluentAssertions;
-using LightControl.Api.Domain;
+using LightControl.Api.AppModel;
 using Xunit;
 using Xunit.Abstractions;
 

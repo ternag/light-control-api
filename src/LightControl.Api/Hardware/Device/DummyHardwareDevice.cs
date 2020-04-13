@@ -1,4 +1,4 @@
-﻿using LightControl.Api.Domain;
+﻿using LightControl.Api.AppModel;
 using LightControl.Api.Hardware.Extensions;
 using Microsoft.Extensions.Logging;
 
