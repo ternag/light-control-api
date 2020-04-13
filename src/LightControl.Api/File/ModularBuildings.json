@@ -1,9 +1,13 @@
 ﻿{
-  "name": "Buildings",
-  "lights": [
-    { "id": "0x18", "name": "Diner lamp post" }
-  ],
+  "name": "Modular Buildings",
+  "description": "",
   "groups" : [
+    {
+      "name": "Outdoor lights",
+      "lights": [
+        { "id": "0x18", "name": "Diner lamp post" }
+      ]
+    },
     {
       "name": "Diner",
       "groups" : [
