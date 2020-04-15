@@ -82,7 +82,8 @@ namespace LightControl.Api.UnitTest
       response.EnsureSuccessStatusCode();
       JsonDocument json = await GetJsonFromContent(response);
       json.RootElement.ValueKind.Should().Be(JsonValueKind.Array);
-      json.RootElement.EnumerateArray().Should().HaveCount(24);
+      json.RootElement.EnumerateArray().Should().NotBeEmpty();
+      json.RootElement.EnumerateArray().Should().NotContainNulls();
     }
 
     

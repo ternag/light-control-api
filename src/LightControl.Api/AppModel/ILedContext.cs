@@ -13,5 +13,5 @@ namespace LightControl.Api.AppModel
     Led Flick(LedId id);
     
     LightGroupDto FlickGroup(LightGroupId id);
-  }
+  } 
 }

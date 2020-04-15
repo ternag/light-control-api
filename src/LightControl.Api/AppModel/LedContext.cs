@@ -40,6 +40,22 @@ namespace LightControl.Api.AppModel
         {0x1d, new Led(0x1d, "Nr. 14, mcp23017", LedState.Off)},
         {0x1e, new Led(0x1e, "Nr. 15, mcp23017", LedState.Off)},
         {0x1f, new Led(0x1f, "Nr. 16, mcp23017", LedState.Off)},
+        {0x20, new Led(0x20, "Nr. 1, mcp23017 (2)", LedState.Off)},
+        {0x21, new Led(0x21, "Nr. 2, mcp23017 (2)", LedState.Off)},
+        {0x22, new Led(0x22, "Nr. 3, mcp23017 (2)", LedState.Off)},
+        {0x23, new Led(0x23, "Nr. 4, mcp23017 (2)", LedState.Off)},
+        {0x24, new Led(0x24, "Nr. 5, mcp23017 (2)", LedState.Off)},
+        {0x25, new Led(0x25, "Nr. 6, mcp23017 (2)", LedState.Off)},
+        {0x26, new Led(0x26, "Nr. 7, mcp23017 (2)", LedState.Off)},
+        {0x27, new Led(0x27, "Nr. 8, mcp23017 (2)", LedState.Off)},
+        {0x28, new Led(0x28, "Nr. 9, mcp23017 (2)", LedState.Off)},
+        {0x29, new Led(0x29, "Nr. 10, mcp23017 (2)", LedState.Off)},
+        {0x2a, new Led(0x2a, "Nr. 11, mcp23017 (2)", LedState.Off)},
+        {0x2b, new Led(0x2b, "Nr. 12, mcp23017 (2)", LedState.Off)},
+        {0x2c, new Led(0x2c, "Nr. 13, mcp23017 (2)", LedState.Off)},
+        {0x2d, new Led(0x2d, "Nr. 14, mcp23017 (2)", LedState.Off)},
+        {0x2e, new Led(0x2e, "Nr. 15, mcp23017 (2)", LedState.Off)},
+        {0x2f, new Led(0x2f, "Nr. 16, mcp23017 (2)", LedState.Off)},
       };
     }
 

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Serilog;
+//using Serilog;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace LightControl.Api
@@ -38,19 +38,25 @@ namespace LightControl.Api
       services.AddSingleton<IHardwareInfoMapper, HardwareInfoMapper>();
       services.AddSingleton<IHardwareDeviceFactory, HardwareDeviceFactory>();
       services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
+      
+      if(_env.IsDevelopment())
+      {
+        services.AddCors(options => { options.AddPolicy("localDevPolicy", builder => builder.AllowAnyOrigin().Build()); });
+      }
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, ILogger<Startup> logger)
+    public void Configure(IApplicationBuilder app)
     {
       if (_env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
+        app.UseCors("localDevPolicy");
       }
       else
       {
         app.UseExceptionHandler("/error");
-        app.UseSerilogRequestLogging();
+        //app.UseSerilogRequestLogging();
       }
 
       app.UseRouting();

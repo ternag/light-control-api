@@ -60,7 +60,7 @@ namespace LightControl.Api.Controllers
       return CatchExceptions(() => FlickAndUpdate(id).ToDto());
     }
 
-    private Led FlickAndUpdate(ushort id)
+    private Led FlickAndUpdate(LedId id)
     {
       var led = _ledContext.Flick(id);
       _hardwareContext.Hal.Update(led);

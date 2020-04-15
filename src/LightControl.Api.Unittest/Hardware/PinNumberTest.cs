@@ -11,7 +11,7 @@ namespace LightControl.Api.UnitTest.Hardware
     [InlineData(0)]
     [InlineData(42)]
     [InlineData(65535)]
-    public void GivenValidInput_CanCreate(int pinNumber)
+    public void GivenValidInput_CanCreate(ushort pinNumber)
     {
       PinNumber sut = pinNumber;
       Assert.Equal(sut, pinNumber);
