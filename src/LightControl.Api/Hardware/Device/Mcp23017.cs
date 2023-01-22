@@ -6,7 +6,7 @@ using LightControl.Api.Hardware.Extensions;
 
 namespace LightControl.Api.Hardware.Device;
 
-public class Mcp23017 : IDevice
+public sealed class Mcp23017 : IDevice
 {
     private readonly Iot.Device.Mcp23xxx.Mcp23017 _device;
     private readonly ILogger _logger;

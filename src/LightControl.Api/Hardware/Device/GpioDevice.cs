@@ -4,7 +4,7 @@ using LightControl.Api.Hardware.Extensions;
 
 namespace LightControl.Api.Hardware.Device;
 
-public class GpioDevice : IDevice
+public sealed class GpioDevice : IDevice
 {
     private readonly ILogger _logger;
     private readonly GpioController _gpio;
