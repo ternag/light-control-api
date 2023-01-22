@@ -2,8 +2,9 @@
 
 namespace LightControl.Api.Controllers
 {
-  public class ErrorController : Controller
+  public class ErrorController : ControllerBase
   {
+    [HttpGet]
     [Route("/error")]
     public IActionResult Error() => Problem();
   }

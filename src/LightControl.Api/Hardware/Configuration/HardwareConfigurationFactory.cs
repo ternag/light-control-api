@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using LightControl.Api.AppModel;
-using Microsoft.Extensions.Logging;
+﻿using LightControl.Api.AppModel;
 using Microsoft.Extensions.Options;
 
 namespace LightControl.Api.Hardware.Configuration
@@ -9,7 +6,7 @@ namespace LightControl.Api.Hardware.Configuration
   public class HardwareConfigurationFactory : IHardwareConfigurationFactory
   {
     private readonly ILogger _logger;
-    private readonly IOptions<HardwareOptions> _options;
+    private readonly HardwareOptions _options;
     private readonly IHardwareFileParser _fileParser;
     private readonly IHardwareInfoMapper _mapper;
     private Dictionary<LedId, Pin> _pins;
@@ -20,7 +17,7 @@ namespace LightControl.Api.Hardware.Configuration
       IHardwareInfoMapper mapper)
     {
       _logger = logger;
-      _options = options;
+      _options = options.Value;
       _fileParser = fileParser;
       _mapper = mapper;
       Init();
@@ -28,7 +25,7 @@ namespace LightControl.Api.Hardware.Configuration
 
     private void Init()
     {
-      var configurationFilepath = new FileInfo(_options.Value.ConfigurationFilepath);
+      var configurationFilepath = new FileInfo(_options.ConfigurationFilepath);
       var hardwareInfo = _fileParser.Parse(configurationFilepath);
       _pins = _mapper.GetPins(hardwareInfo);
       foreach (var (_, pin) in _pins)
@@ -39,7 +36,7 @@ namespace LightControl.Api.Hardware.Configuration
 
     public IHardwareConfiguration Create()
     {
-      _logger.LogInformation($"Hardware config filepath {_options.Value.ConfigurationFilepath}");
+      _logger.LogInformation($"Hardware config filepath {_options.ConfigurationFilepath}");
       Init();
       return new HardwareConfiguration(_pins);
     }

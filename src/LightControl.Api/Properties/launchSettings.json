@@ -1,13 +1,5 @@
 ﻿{
   "$schema": "http://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:35457",
-      "sslPort": 44320
-    }
-  },
   "profiles": {
     "LightControl.Api": {
       "commandName": "Project",

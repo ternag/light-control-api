@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using LightControl.Api.AppModel;
+﻿using LightControl.Api.AppModel;
 using LightControl.Api.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace LightControl.Api.Controllers
 {
   [ApiController]
-  [Route("/api/[controller]")]
   public class LedController : ControllerBase
   {
     private readonly ILogger _logger;
     private readonly ILedContext _ledContext;
     private readonly IHardwareContext _hardwareContext;
 
-    public LedController(ILedContext ledContext, ILogger<LedController> logger, IHardwareContext hardwareContext)
+    public LedController(ILedContext ledContext, ILogger logger, IHardwareContext hardwareContext)
     {
       _logger = logger;
       _ledContext = ledContext;
@@ -24,6 +19,7 @@ namespace LightControl.Api.Controllers
     }
 
     [HttpGet]
+    [Route("/api/led")]
     public ActionResult<IEnumerable<LedDto>> Get()
     {
       return CatchExceptions(() => _ledContext.All.Select(l => l.ToDto()));
@@ -31,7 +27,7 @@ namespace LightControl.Api.Controllers
 
 
     [HttpGet]
-    [Route("{id}")]
+    [Route("/api/led/{id}")]
     public ActionResult<LedDto> Get(ushort id)
     {
       _logger.LogInformation($"Getting LED {id}");
@@ -39,7 +35,7 @@ namespace LightControl.Api.Controllers
     }
 
     [HttpPut]
-    [Route("{id}")]
+    [Route("/api/led/{id}")]
     public ActionResult<LedDto> Put(ushort id, [FromBody] LedUpdateDisplay newDisplayValue)
     {
       _logger.LogInformation($"Updating LED {id}, display={newDisplayValue.Display}");
@@ -53,7 +49,7 @@ namespace LightControl.Api.Controllers
     }
 
     [HttpGet]
-    [Route("{id}/_flick")]
+    [Route("/api/led/{id}/_flick")]
     public ActionResult<LedDto> Flick(ushort id)
     {
       _logger.LogInformation($"Flicking LED {id}");

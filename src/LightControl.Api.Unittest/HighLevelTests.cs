@@ -3,7 +3,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
 using LightControl.Api.UnitTest.TestUtils;
-using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -14,20 +13,40 @@ namespace LightControl.Api.UnitTest
     private readonly ITestOutputHelper _outputHelper;
     private readonly HttpClient _client;
 
-    public HighLevelTests(ITestOutputHelper outputHelper)
+    public HighLevelTests( ITestOutputHelper outputHelper)
     {
+      var factory = new TestServerFactory<Program>(outputHelper);
       _outputHelper = outputHelper;
-      var server = TestServerFactory.Create(outputHelper, LogLevel.Error);
-      _client = server.CreateClient();
+      _client = factory.CreateClient();
     }
 
+    [Theory]
+    [InlineData("/")]
+    [InlineData("/api/led")]
+    [InlineData("/api/led/1")]
+    public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
+    {
+      // Arrange
+      // Act
+      var response = await _client.GetAsync(url);
+
+      // Assert
+      response.EnsureSuccessStatusCode(); // Status Code 200-299
+      Assert.Equal("application/json; charset=utf-8", 
+        response.Content.Headers.ContentType?.ToString());
+      
+      _outputHelper.WriteLine(await response.Content.ReadAsStringAsync());
+    }
+    
+    
     [Fact]
     public async Task GivenATestServe_RootShouldReturnGreenState()
     {
       var response = await _client.GetAsync("/");
       JsonDocument json = await GetJsonFromContent(response);
       var actual = json.RootElement.GetProperty("state").GetString();
-      actual.ToLower().Should().Be("green");
+      actual.Should().NotBeNull();
+      actual?.ToLower().Should().Be("green");
     }
 
     [Fact]
@@ -85,8 +104,6 @@ namespace LightControl.Api.UnitTest
       json.RootElement.EnumerateArray().Should().NotBeEmpty();
       json.RootElement.EnumerateArray().Should().NotContainNulls();
     }
-
-    
     
     private async Task<JsonDocument> GetJsonFromContent(HttpResponseMessage response)
     {
@@ -96,6 +113,5 @@ namespace LightControl.Api.UnitTest
       _outputHelper.WriteLine(responseJson.ToFormatedString());
       return responseJson;
     }
-
   }
 }

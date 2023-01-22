@@ -1,43 +1,37 @@
-using System;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Serilog;
+using LightControl.Api.AppModel;
+using LightControl.Api.Hardware;
+using LightControl.Api.Hardware.Configuration;
 
-namespace LightControl.Api
+namespace LightControl.Api;
+
+public class Program
 {
-  public class Program
-  {
     public static void Main(string[] args)
     {
-      var configuration = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
-        .AddEnvironmentVariables("LC_")
-        .Build();
-      
-      Log.Logger = new LoggerConfiguration()
-         .ReadFrom.Configuration(configuration)
-         .CreateLogger();
-      
-      try
-      {
-        Log.Information($"Starting up '{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}' environment");
-        CreateHostBuilder(args).Build().Run();
-      }
-      catch (Exception ex)
-      {
-        Log.Fatal(ex, "Application start-up failed");
-      }
-      finally
-      {
-        Log.CloseAndFlush();
-      }
-    }
+        var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddControllers();
+        builder.Services.AddSingleton(typeof(ILogger), typeof(Logger<Program>));
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddSingleton<ILedContext, LedContext>();
+        builder.Services.AddSingleton<IHardwareContext, HardwareContext>();
+        builder.Services.AddSingleton<IHardwareFileParser, HardwareFileParser>();
+        builder.Services.AddSingleton<IHardwareInfoMapper, HardwareInfoMapper>();
+        builder.Services.AddSingleton<IHardwareDeviceFactory, HardwareDeviceFactory>();
+        builder.Services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
+        builder.Services.Configure<HardwareOptions>(builder.Configuration.GetSection(HardwareOptions.SectionName));
+        
+        var app = builder.Build();
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-      Host.CreateDefaultBuilder(args)
-        .UseSerilog()
-        .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-  }
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
+        app.MapControllers();
+        app.Run();
+    }
 }
