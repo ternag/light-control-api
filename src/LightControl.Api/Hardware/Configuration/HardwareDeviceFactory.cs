@@ -18,16 +18,13 @@ public class HardwareDeviceFactory : IHardwareDeviceFactory
         if (device == null)
             throw new ArgumentNullException(nameof(device));
 
-        switch (device.DeviceType.ToLower())
+        return device.DeviceType.ToLower() switch
         {
-            case DeviceType.DummyDevice:
-                return new DummyHardwareDevice(_logger);
-            case DeviceType.Gpio:
-                return new GpioDevice(_logger);
-            case DeviceType.Mcp23017:
-                return new Mcp23017(new Mcp23017Address(device.DeviceIdAsUShort), device.BusIdAsUShort, _logger);
-            default:
-                throw new Exception($"Error creating device: Device '{device.DeviceType}' is unknown");
-        }
+            DeviceType.DummyDevice => new DummyHardwareDevice(_logger),
+            DeviceType.Gpio => new GpioDevice(_logger),
+            DeviceType.Mcp23017 => new Mcp23017(new Mcp23017Address(device.DeviceIdAsUShort), device.BusIdAsUShort, _logger),
+            DeviceType.Pca9685 => new Pca9685Device(device.BusIdAsUShort, device.DeviceIdAsUShort, _logger),
+            _ => throw new Exception($"Error creating device: Device '{device.DeviceType}' is unknown")
+        };
     }
 }

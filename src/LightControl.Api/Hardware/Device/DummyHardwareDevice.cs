@@ -7,7 +7,7 @@ namespace LightControl.Api.Hardware.Device;
 ///     The purpose of this class is to be used for development and
 ///     testing on systems that do not support the System.Device.Gpio devices.
 /// </summary>
-public class DummyHardwareDevice : IDevice
+public sealed class DummyHardwareDevice : IDevice
 {
     private readonly ILogger _logger;
 
