@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace LightControl.Api.Controllers
+namespace LightControl.Api.Controllers;
+
+public class ErrorController : ControllerBase
 {
-  public class ErrorController : ControllerBase
-  {
     [HttpGet]
     [Route("/error")]
-    public IActionResult Error() => Problem();
-  }
+    public IActionResult Error()
+    {
+        return Problem();
+    }
 }

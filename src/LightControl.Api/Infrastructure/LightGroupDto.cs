@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
+﻿namespace LightControl.Api.Infrastructure;
 
-namespace LightControl.Api.Infrastructure
+public class LightGroupDto
 {
-  public class LightGroupDto
-  {
     public string Name { get; set; }
     public IList<LightGroupDto> Groups { get; set; }
     public IList<LightDto> Lights { get; set; }
-  }
 }

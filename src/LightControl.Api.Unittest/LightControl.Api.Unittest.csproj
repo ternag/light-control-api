@@ -6,34 +6,34 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoFixture" Version="4.17.0" />
-        <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.2" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-        <PackageReference Include="Moq" Version="4.13.1" />
-        <PackageReference Include="xunit" Version="2.4.0" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-        <PackageReference Include="coverlet.collector" Version="1.0.1" />
-        <PackageReference Include="FluentAssertions" Version="5.10.3" />
-        <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0" />
+        <PackageReference Include="AutoFixture" Version="4.17.0"/>
+        <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0"/>
+        <PackageReference Include="Moq" Version="4.13.1"/>
+        <PackageReference Include="xunit" Version="2.4.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0"/>
+        <PackageReference Include="coverlet.collector" Version="1.0.1"/>
+        <PackageReference Include="FluentAssertions" Version="5.10.3"/>
+        <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\LightControl.Api\LightControl.Api.csproj" />
+        <ProjectReference Include="..\LightControl.Api\LightControl.Api.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="File\dummy_hardware.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="File\dummy_hardware.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="File\ModularBuildings.json">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </Content>
+        <Content Include="File\ModularBuildings.json">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

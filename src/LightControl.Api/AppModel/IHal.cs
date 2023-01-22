@@ -1,9 +1,6 @@
-using System;
+namespace LightControl.Api.AppModel;
 
-namespace LightControl.Api.AppModel
+public interface IHal : IDisposable
 {
-  public interface IHal : IDisposable
-  {
     void Update(Led led);
-  }
 }

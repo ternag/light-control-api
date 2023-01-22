@@ -1,8 +1,7 @@
-﻿namespace LightControl.Api.AppModel
+﻿namespace LightControl.Api.AppModel;
+
+public interface IHardwareContext
 {
-  public interface IHardwareContext
-  {
     IHal Hal { get; }
     void ReloadHardwareConfiguration();
-  }
 }

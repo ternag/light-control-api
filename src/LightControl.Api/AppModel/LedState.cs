@@ -1,8 +1,7 @@
-namespace LightControl.Api.AppModel
+namespace LightControl.Api.AppModel;
+
+public enum LedState
 {
-  public enum LedState
-  {
     Off = 0,
     On = 1
-  }
 }

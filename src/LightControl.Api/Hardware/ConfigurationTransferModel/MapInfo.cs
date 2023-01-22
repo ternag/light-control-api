@@ -1,18 +1,17 @@
-﻿namespace LightControl.Api.Hardware.ConfigurationTransferModel
+﻿namespace LightControl.Api.Hardware.ConfigurationTransferModel;
+
+public class MapInfo
 {
-  public class MapInfo
-  {
     public MapInfo()
     {
     }
 
     public MapInfo(string id, int pin)
     {
-      Id = id;
-      Pin = pin;
+        Id = id;
+        Pin = pin;
     }
 
     public string Id { get; set; } // TODO: rename to ledId
     public int Pin { get; set; } // TODO: rename to PinNumber
-  }
 }

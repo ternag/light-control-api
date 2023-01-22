@@ -1,37 +1,35 @@
 ﻿using LightControl.Api.AppModel;
 using LightControl.Api.Hardware.Extensions;
-using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Hardware.Device
+namespace LightControl.Api.Hardware.Device;
+
+/// <summary>
+///     The purpose of this class is to be used for development and
+///     testing on systems that do not support the System.Device.Gpio devices.
+/// </summary>
+public class DummyHardwareDevice : IDevice
 {
-  /// <summary>
-  /// The purpose of this class is to be used for development and
-  /// testing on systems that do not support the System.Device.Gpio devices.
-  /// </summary>
-  public class DummyHardwareDevice : IDevice
-  {
     private readonly ILogger _logger;
 
     public DummyHardwareDevice(ILogger logger)
     {
-      _logger = logger;
+        _logger = logger;
     }
 
     public void Write(PinNumber pin, LedState value)
     {
-      _logger.LogInformation($"Writing '{value.ToPinValue()}' to pin '{pin:x}'");
+        _logger.LogInformation($"Writing '{value.ToPinValue()}' to pin '{pin:x}'");
     }
 
     public string DisplayName => "Dummy hardware device";
 
     public void InitPin(PinNumber pin)
     {
-      _logger.LogDebug($"pin {pin} initialized");
+        _logger.LogDebug($"pin {pin} initialized");
     }
 
     public void Dispose()
     {
-      // You can go about your business. Move along.
+        // You can go about your business. Move along.
     }
-  }
 }

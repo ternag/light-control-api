@@ -3,15 +3,15 @@ using AutoFixture;
 using AutoFixture.AutoMoq;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 
-namespace LightControl.Api.UnitTest.TestUtils
+namespace LightControl.Api.UnitTest.TestUtils;
+
+public class CustomFixture : Fixture
 {
-  public class CustomFixture : Fixture
-  {
-    private readonly Random _random = new Random();
+    private readonly Random _random = new();
+
     public CustomFixture()
     {
-      this.Customize(new AutoMoqCustomization());
-      this.Register<MapInfo>(() => new MapInfo($"0x{_random.Next(0,0xFFFF):x4}", _random.Next(0,255)));
+        Customize(new AutoMoqCustomization());
+        this.Register(() => new MapInfo($"0x{_random.Next(0, 0xFFFF):x4}", _random.Next(0, 255)));
     }
-  }
 }

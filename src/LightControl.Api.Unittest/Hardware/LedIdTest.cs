@@ -4,15 +4,15 @@ using LightControl.Api.AppModel;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace LightControl.Api.UnitTest.Hardware
+namespace LightControl.Api.UnitTest.Hardware;
+
+public class PinIdTest
 {
-  public class PinIdTest
-  {
     private readonly ITestOutputHelper _outputHelper;
 
     public PinIdTest(ITestOutputHelper outputHelper)
     {
-      _outputHelper = outputHelper;
+        _outputHelper = outputHelper;
     }
 
     [Theory]
@@ -21,8 +21,8 @@ namespace LightControl.Api.UnitTest.Hardware
     [InlineData(65535)]
     public void GivenValidInput_CanCreate(int pinId)
     {
-      LedId sut = pinId;
-      Assert.Equal(sut, pinId);
+        LedId sut = pinId;
+        Assert.Equal(sut, pinId);
     }
 
     [Theory]
@@ -31,15 +31,15 @@ namespace LightControl.Api.UnitTest.Hardware
     [InlineData("0xffff", 65535)]
     public void GivenValidStringInput_CanCreate(string pinId, int expected)
     {
-      LedId sut = pinId;
-      Assert.Equal(sut, expected);
+        LedId sut = pinId;
+        Assert.Equal(sut, expected);
     }
 
     [Fact]
     public void ImplementsEqualEqualOperator()
     {
-      LedId a = 123;
-      Assert.True(a == 123);
+        LedId a = 123;
+        Assert.True(a == 123);
     }
 
     [Theory]
@@ -47,9 +47,8 @@ namespace LightControl.Api.UnitTest.Hardware
     [InlineData(65536)]
     public void GivenInvalidInput_CannotCreate(int invalidPinId)
     {
-      LedId sut;
-      Action act = () => sut = invalidPinId;
-      act.Should().Throw<Exception>();
+        LedId sut;
+        Action act = () => sut = invalidPinId;
+        act.Should().Throw<Exception>();
     }
-  }
 }

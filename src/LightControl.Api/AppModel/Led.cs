@@ -1,12 +1,12 @@
-namespace LightControl.Api.AppModel
+namespace LightControl.Api.AppModel;
+
+public class Led
 {
-  public class Led
-  {
     public Led(LedId id, string display, LedState state)
     {
-      Id = id;
-      Display = display;
-      State = state;
+        Id = id;
+        Display = display;
+        State = state;
     }
 
     public LedId Id { get; }
@@ -15,10 +15,9 @@ namespace LightControl.Api.AppModel
 
     public void Flick()
     {
-      if (State == LedState.On)
-        State = LedState.Off;
-      else
-        State = LedState.On;
+        if (State == LedState.On)
+            State = LedState.Off;
+        else
+            State = LedState.On;
     }
-  }
 }

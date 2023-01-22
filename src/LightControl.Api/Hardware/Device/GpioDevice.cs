@@ -1,38 +1,36 @@
 using System.Device.Gpio;
 using LightControl.Api.AppModel;
 using LightControl.Api.Hardware.Extensions;
-using Microsoft.Extensions.Logging;
 
-namespace LightControl.Api.Hardware.Device
+namespace LightControl.Api.Hardware.Device;
+
+public class GpioDevice : IDevice
 {
-  public class GpioDevice : IDevice
-  {
     private readonly ILogger _logger;
-    GpioController _gpio;
+    private readonly GpioController _gpio;
 
-    public GpioDevice(ILogger logger )
+    public GpioDevice(ILogger logger)
     {
-      _logger = logger;
-      _gpio = new GpioController();
+        _logger = logger;
+        _gpio = new GpioController();
     }
 
     public void InitPin(PinNumber pin)
     {
-      _gpio.OpenPin((int) pin, PinMode.Output);
-      _gpio.Write((int) pin, PinValue.Low);
+        _gpio.OpenPin((int)pin, PinMode.Output);
+        _gpio.Write((int)pin, PinValue.Low);
     }
 
     public void Write(PinNumber pin, LedState value)
     {
-      _logger.LogDebug($"Writing {value} to pin {pin}");
-      _gpio.Write((int) pin, value.ToPinValue());
+        _logger.LogDebug($"Writing {value} to pin {pin}");
+        _gpio.Write((int)pin, value.ToPinValue());
     }
 
     public string DisplayName => "Gpio";
 
     public void Dispose()
     {
-      _gpio?.Dispose();
+        _gpio?.Dispose();
     }
-  }
 }

@@ -1,10 +1,9 @@
 ﻿using LightControl.Api.AppModel;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 
-namespace LightControl.Api.Hardware.Configuration
+namespace LightControl.Api.Hardware.Configuration;
+
+public interface IHardwareDeviceFactory
 {
-  public interface IHardwareDeviceFactory
-  {
     IDevice Create(DeviceInfo device);
-  }
 }

@@ -1,7 +1,6 @@
-﻿namespace LightControl.Api.Hardware.Configuration
+﻿namespace LightControl.Api.Hardware.Configuration;
+
+public interface IHardwareConfigurationFactory
 {
-  public interface IHardwareConfigurationFactory
-  {
     IHardwareConfiguration Create();
-  }
 }

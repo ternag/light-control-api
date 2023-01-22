@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using LightControl.Api.Utils;
+﻿using LightControl.Api.Utils;
 
-namespace LightControl.Api.Hardware.ConfigurationTransferModel
+namespace LightControl.Api.Hardware.ConfigurationTransferModel;
+
+public class DeviceInfo
 {
-  public class DeviceInfo
-  {
     public string DeviceType { get; set; }
     public string BusId { get; set; }
     public string DeviceId { get; set; }
@@ -13,5 +11,4 @@ namespace LightControl.Api.Hardware.ConfigurationTransferModel
 
     public ushort DeviceIdAsUShort => Convert.ToUInt16(DeviceId, DeviceId.GetBase());
     public ushort BusIdAsUShort => Convert.ToUInt16(BusId, BusId.GetBase());
-  }
 }

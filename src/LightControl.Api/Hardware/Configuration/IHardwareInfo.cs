@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using LightControl.Api.Hardware.ConfigurationTransferModel;
+﻿using LightControl.Api.Hardware.ConfigurationTransferModel;
 
-namespace LightControl.Api.Hardware.Configuration
+namespace LightControl.Api.Hardware.Configuration;
+
+public interface IHardwareInfo
 {
-  public interface IHardwareInfo
-  {
     IEnumerable<DeviceInfo> Devices { get; set; }
-  }
 }

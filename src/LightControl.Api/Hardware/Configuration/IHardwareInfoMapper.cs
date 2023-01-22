@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using LightControl.Api.AppModel;
+﻿using LightControl.Api.AppModel;
 
-namespace LightControl.Api.Hardware.Configuration
+namespace LightControl.Api.Hardware.Configuration;
+
+public interface IHardwareInfoMapper
 {
-  public interface IHardwareInfoMapper
-  {
     Dictionary<LedId, Pin> GetPins(IHardwareInfo hardwareInfo);
-  }
 }

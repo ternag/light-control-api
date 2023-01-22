@@ -2,10 +2,10 @@
 using LightControl.Api.Utils;
 using Xunit;
 
-namespace LightControl.Api.UnitTest.Hardware
+namespace LightControl.Api.UnitTest.Hardware;
+
+public class NumberUtilsTest
 {
-  public class NumberUtilsTest
-  {
     [Theory]
     [InlineData(null, 10)]
     [InlineData("", 10)]
@@ -18,8 +18,7 @@ namespace LightControl.Api.UnitTest.Hardware
     [InlineData("0b0100_1010", 2)]
     public void TestDescription(string value, int expected)
     {
-      int actual = value.GetBase();
-      actual.Should().Be(expected);
+        var actual = value.GetBase();
+        actual.Should().Be(expected);
     }
-  }
 }

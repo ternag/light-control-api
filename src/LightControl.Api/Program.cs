@@ -20,7 +20,7 @@ public class Program
         builder.Services.AddSingleton<IHardwareDeviceFactory, HardwareDeviceFactory>();
         builder.Services.AddSingleton<IHardwareConfigurationFactory, HardwareConfigurationFactory>();
         builder.Services.Configure<HardwareOptions>(builder.Configuration.GetSection(HardwareOptions.SectionName));
-        
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -29,6 +29,7 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();

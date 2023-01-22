@@ -1,10 +1,8 @@
-﻿using System.IO;
-using LightControl.Api.Hardware.ConfigurationTransferModel;
+﻿using LightControl.Api.Hardware.ConfigurationTransferModel;
 
-namespace LightControl.Api.Hardware.Configuration
+namespace LightControl.Api.Hardware.Configuration;
+
+public interface IHardwareFileParser
 {
-  public interface IHardwareFileParser
-  {
     HardwareInfo Parse(FileInfo jsonFile);
-  }
 }
