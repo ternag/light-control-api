@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace LightControl.Api.Infrastructure;
 
@@ -6,7 +7,7 @@ public class LightConfigFileParser
 {
     private static readonly JsonSerializerOptions SerializerOptions = new()
     {
-        IgnoreNullValues = true,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         IgnoreReadOnlyProperties = true,
         WriteIndented = true
