@@ -12,7 +12,7 @@ public sealed class Pca9685Device : IDevice
     private readonly ILogger _logger;
     private readonly Pca9685 _device;
 
-    public Pca9685Device(ushort bus, ushort address, ILogger logger)
+    public Pca9685Device(ushort bus, Pca9685Address address, ILogger logger)
     {
         _logger = logger;
         var settings = new I2cConnectionSettings(bus, address);
@@ -24,12 +24,17 @@ public sealed class Pca9685Device : IDevice
 
     public void Write(PinNumber pin, LedState value)
     {
-        _logger.LogDebug($"Pin: {pin}, LedState: {value}");
+        _device.SetDutyCycle(pin, value == LedState.Off ? 0.0 : 1.0);
+    }
+
+    public void Write(PinNumber pin, double value)
+    {
+        _device.SetDutyCycle(pin, value);
     }
 
     public void InitPin(PinNumber pin)
     {
-        //throw new NotImplementedException();
+        _device.SetDutyCycle(pin,0.0);
     }
 
     public void Dispose()

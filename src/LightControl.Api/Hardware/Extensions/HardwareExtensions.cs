@@ -5,13 +5,23 @@ namespace LightControl.Api.Hardware.Extensions;
 
 public static class HardwareExtensions
 {
-  /// <summery>
-  ///     Map the LedState from the application domain to the PinValue in the hardware domain
-  /// </summery>
-  public static PinValue ToPinValue(this LedState state)
+    public static PinValue ToPinValue(this LedState state)
     {
-        if (state == LedState.Off) return PinValue.Low;
+        return state == LedState.Off ? PinValue.Low : PinValue.High;
+    }
 
-        return PinValue.High;
+    public static PinValue ToPinValue(this double state)
+    {
+        return state == 0.0 ? PinValue.Low : PinValue.High;
+    }
+
+    public static bool ToBool(this LedState state)
+    {
+        return state != LedState.Off;
+    }
+
+    public static bool ToBool(this double value)
+    {
+        return value != 0.0;
     }
 }

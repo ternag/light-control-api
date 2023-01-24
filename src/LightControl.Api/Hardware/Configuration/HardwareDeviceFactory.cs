@@ -22,7 +22,7 @@ public class HardwareDeviceFactory : IHardwareDeviceFactory
         {
             DeviceType.DummyDevice => new DummyHardwareDevice(_logger),
             DeviceType.Gpio => new GpioDevice(_logger),
-            DeviceType.Mcp23017 => new Mcp23017(new Mcp23017Address(device.DeviceIdAsUShort), device.BusIdAsUShort, _logger),
+            DeviceType.Mcp23017 => new Mcp23017Device(new Mcp23017Address(device.DeviceIdAsUShort), device.BusIdAsUShort, _logger),
             DeviceType.Pca9685 => new Pca9685Device(device.BusIdAsUShort, device.DeviceIdAsUShort, _logger),
             _ => throw new Exception($"Error creating device: Device '{device.DeviceType}' is unknown")
         };

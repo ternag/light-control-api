@@ -28,6 +28,11 @@ public sealed class DummyHardwareDevice : IDevice
         _logger.LogDebug($"pin {pin} initialized");
     }
 
+    public void Write(PinNumber pin, double value)
+    {
+        _logger.LogDebug($"Writing '{value:F}' to pin '{pin:x}'");
+    }
+
     public void Dispose()
     {
         // You can go about your business. Move along.

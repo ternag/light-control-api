@@ -21,6 +21,12 @@ public sealed class GpioDevice : IDevice
         _gpio.Write((int)pin, PinValue.Low);
     }
 
+    public void Write(PinNumber pin, double value)
+    {
+        _logger.LogDebug($"Writing {value} to pin {pin}");
+        _gpio.Write((int)pin, value.ToPinValue());
+    }
+
     public void Write(PinNumber pin, LedState value)
     {
         _logger.LogDebug($"Writing {value} to pin {pin}");

@@ -21,7 +21,7 @@ public class Mcp23017Test
     [InlineData(0xFFFF, 7, true, 0xFFFF)]
     public void GivenValidInput_PinIsSetToCorrectValue(ushort pinValues, byte pin, bool newState, ushort expected)
     {
-        var actual = Mcp23017.SetBit(pinValues, pin, newState);
+        var actual = Mcp23017Device.SetBit(pinValues, pin, newState);
         actual.Should().Be(expected);
     }
 
@@ -29,14 +29,14 @@ public class Mcp23017Test
     public void GivenValidBitArray_ConvertsToUShort()
     {
         var ar = new BitArray(new byte[] { 0xFF, 0x05 });
-        var actual = Mcp23017.BitArrayToUshort(ar);
+        var actual = Mcp23017Device.BitArrayToUshort(ar);
         actual.Should().Be(0x05FF);
     }
 
     [Fact]
     public void GivenNullInput_ShouldThrowArgumentNullException()
     {
-        var func = () => Mcp23017.BitArrayToUshort(null);
+        var func = () => Mcp23017Device.BitArrayToUshort(null);
         func.Should().Throw<ArgumentNullException>();
     }
 
@@ -44,7 +44,7 @@ public class Mcp23017Test
     public void GivenToBigBitArray_ShouldThrowArgumentException()
     {
         var ar = new BitArray(new byte[] { 0xFF, 0xFF, 0x1 });
-        var func = () => Mcp23017.BitArrayToUshort(ar);
+        var func = () => Mcp23017Device.BitArrayToUshort(ar);
         func.Should().Throw<ArgumentException>();
     }
 }

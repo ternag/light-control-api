@@ -6,19 +6,19 @@ using LightControl.Api.Hardware.Extensions;
 
 namespace LightControl.Api.Hardware.Device;
 
-public sealed class Mcp23017 : IDevice
+public sealed class Mcp23017Device : IDevice
 {
-    private readonly Iot.Device.Mcp23xxx.Mcp23017 _device;
+    private readonly Mcp23017 _device;
     private readonly ILogger _logger;
     private ushort _pinValues;
 
     // TODO: Create type for 'Bus'
-    public Mcp23017(Mcp23017Address address, ushort bus, ILogger logger)
+    public Mcp23017Device(Mcp23017Address address, ushort bus, ILogger logger)
     {
         _logger = logger;
         var settings = new I2cConnectionSettings(bus, address);
         var device = I2cDevice.Create(settings);
-        _device = new Iot.Device.Mcp23xxx.Mcp23017(device);
+        _device = new Mcp23017(device);
         _device.WriteUInt16(Register.IODIR, 0x0); // init all 16 pins to output
         _device.WriteUInt16(Register.GPIO, 0x0); // init all 16 pins to low (zero)
     }
@@ -28,14 +28,23 @@ public sealed class Mcp23017 : IDevice
         // all pins are initialized in constructor for this device
     }
 
+    public void Write(PinNumber pin, double value)
+    {
+        if (pin > 15)
+            throw new ArgumentException($"The Mcp23017 device can only handle pin number between 0 and 15. Provided PinNumber was {pin}");
+        _logger.LogDebug($"Setting pin {pin:x} to {value}");
+        _pinValues = SetBit(_pinValues, pin, value.ToBool());
+        _device.WriteUInt16(Register.GPIO, _pinValues);
+        
+    }
+
     public void Write(PinNumber pin, LedState value)
     {
         if (pin > 15)
-            throw new ArgumentException(
-                $"The Mcp23017 device can only handle pin number between 0 and 15. Provided PinNumber was {pin}");
+            throw new ArgumentException($"The Mcp23017 device can only handle pin number between 0 and 15. Provided PinNumber was {pin}");
 
-        _logger.LogDebug($"Setting pin {pin:x} to {value}");
-        _pinValues = SetBit(_pinValues, (ushort)pin, (bool)value.ToPinValue());
+        _logger.LogDebug($"Setting pin {pin:x} to {value.ToPinValue()}");
+        _pinValues = SetBit(_pinValues, pin, value.ToBool());
         _device.WriteUInt16(Register.GPIO, _pinValues);
     }
 
