@@ -17,12 +17,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.*
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Build 
-      run: dotnet build --no-restore --configuration Release LightControl.sln
+      run: dotnet build --configuration Release LightControl.sln
     - name: Run unit tests
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test
     - name: Publish
       run: dotnet publish --configuration Release --runtime linux-arm --self-contained true -o website
     - name: Upload a Build Artifact
