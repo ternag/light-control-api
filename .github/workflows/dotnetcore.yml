@@ -22,10 +22,5 @@ jobs:
     - name: Run unit tests
       run: dotnet test
     - name: Publish
-      run: dotnet publish src/LightControl.Api/LightControl.Api.csproj --configuration Release --runtime linux-arm --self-contained true -o website
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.2
-      with:
-        name: website
-        path: light-control-api/website/**
-        if-no-files-found: error
+      run: dotnet publish src/LightControl.Api/LightControl.Api.csproj --configuration Release --runtime linux-arm -o dist
+      
