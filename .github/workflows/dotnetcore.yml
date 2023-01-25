@@ -28,4 +28,4 @@ jobs:
       with:
         name: website
         path: light-control-api/website/**
-        if-no-files-found: Error
+        if-no-files-found: error
