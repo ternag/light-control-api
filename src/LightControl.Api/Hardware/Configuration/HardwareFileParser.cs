@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using LightControl.Api.Hardware.ConfigurationTransferModel;
 
 namespace LightControl.Api.Hardware.Configuration;
@@ -7,7 +8,7 @@ public class HardwareFileParser : IHardwareFileParser
 {
     private static readonly JsonSerializerOptions SerializerOptions = new()
     {
-        IgnoreNullValues = true,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         IgnoreReadOnlyProperties = true,
         WriteIndented = true
