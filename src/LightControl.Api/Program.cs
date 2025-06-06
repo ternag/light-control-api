@@ -9,6 +9,11 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        
+        // Configure logging
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
+        
         builder.Services.AddControllers();
         builder.Services.AddSingleton(typeof(ILogger), typeof(Logger<Program>));
         builder.Services.AddEndpointsApiExplorer();
