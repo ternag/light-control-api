@@ -26,7 +26,7 @@ public class LightConfigFileParser
         try
         {
             var jsonString = File.ReadAllText(jsonFile.FullName);
-            return JsonSerializer.Deserialize<LightConfigDto>(jsonString, SerializerOptions);
+            return JsonSerializer.Deserialize<LightConfigDto>(jsonString, SerializerOptions)!;
         }
         catch (Exception e)
         {

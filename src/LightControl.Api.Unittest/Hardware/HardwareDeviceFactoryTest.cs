@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoFixture;
 using FluentAssertions;
@@ -44,7 +45,8 @@ public class HardwareDeviceFactoryTest
     {
         var deviceInfo = new DeviceInfo
         {
-            DeviceType = deviceType
+            DeviceType = deviceType,
+            Map = new List<MapInfo>()
         };
         var sut = _fixture.Create<HardwareDeviceFactory>();
         sut.Invoking(x => x.Create(deviceInfo))

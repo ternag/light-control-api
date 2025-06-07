@@ -12,6 +12,6 @@ public class CustomFixture : Fixture
     public CustomFixture()
     {
         Customize(new AutoMoqCustomization());
-        this.Register(() => new MapInfo($"0x{_random.Next(0, 0xFFFF):x4}", _random.Next(0, 255)));
+        this.Register(() => new MapInfo { Id = $"0x{_random.Next(0, 0xFFFF):x4}", Pin = _random.Next(0, 255) });
     }
 }

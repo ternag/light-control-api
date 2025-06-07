@@ -28,7 +28,7 @@ public class HardwareFileParser : IHardwareFileParser
         {
             var jsonString = File.ReadAllText(jsonFile.FullName);
             var deviceInfos = JsonSerializer.Deserialize<HardwareInfo>(jsonString, SerializerOptions);
-            return deviceInfos;
+            return deviceInfos!;
         }
         catch (Exception e)
         {

@@ -2,6 +2,8 @@
   "devices": [
     {
       "deviceType": "dummy_device",
+      "busId": "0",
+      "deviceId": "0x00",
       "map": [
         { "id": "0", "pin": 4},
         { "id": "1", "pin": 17},

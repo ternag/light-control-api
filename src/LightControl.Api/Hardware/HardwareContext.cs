@@ -23,5 +23,5 @@ public class HardwareContext : IHardwareContext
         Hal = new Hal(_hardwareConfigurationFactory.Create());
     }
 
-    public IHal Hal { get; private set; }
+    public IHal Hal { get; private set; } = null!;
 }

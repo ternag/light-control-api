@@ -58,7 +58,7 @@ public class LedContext : ILedContext
     private IDictionary<LedId, Led> _leds { get; }
 
     public IEnumerable<Led> All => _leds.Values;
-    public LightConfigDto Config { get; }
+    public required LightConfigDto Config { get; init; }
 
     public Led Get(LedId ledId)
     {
@@ -72,7 +72,7 @@ public class LedContext : ILedContext
         var led = Get(id);
         led?.Flick();
 
-        return led;
+        return led!;
     }
 
     public LightGroupDto FlickGroup(LightGroupId id)

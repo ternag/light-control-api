@@ -2,5 +2,5 @@ namespace LightControl.Api.AppModel;
 
 public class LedUpdateDisplay
 {
-    public string Display { get; set; }
+    public required string Display { get; set; }
 }

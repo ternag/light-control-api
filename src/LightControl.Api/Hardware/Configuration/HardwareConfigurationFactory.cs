@@ -9,7 +9,7 @@ public class HardwareConfigurationFactory : IHardwareConfigurationFactory
     private readonly ILogger _logger;
     private readonly IHardwareInfoMapper _mapper;
     private readonly HardwareOptions _options;
-    private Dictionary<LedId, Pin> _pins;
+    private Dictionary<LedId, Pin> _pins = null!;
 
     public HardwareConfigurationFactory(ILogger<HardwareConfigurationFactory> logger,
         IOptions<HardwareOptions> options,
