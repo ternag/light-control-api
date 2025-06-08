@@ -2,13 +2,39 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Standard Workflow
+
+1. First, think through the problem, read the codebase for relevant files, and write a plan to task/todo.md.
+2. The plan should have a list of todo items that you can check off as you complete them.
+3. Before you begin working, check in with me and I will verify the plan.
+4. Then, begin working on the todo items, marking them complete as you go.
+5. Finally, write a review section to the task/todo.md file, with a summery of the changes you made and any other relevant information.
+
 ## Build and Development Commands
 
 - **Build**: `dotnet build`
+- **Build Release**: `dotnet build --configuration Release`
 - **Run API**: `dotnet run --project src/LightControl.Api`
 - **Run tests**: `dotnet test`
+- **Run single test**: `dotnet test --filter "MethodName"`
 - **Build for Raspberry Pi**: `dotnet publish --configuration Release --runtime linux-arm --self-contained true src/LightControl.Api/LightControl.Api.csproj`
 - **PowerShell build script**: `./Make.ps1`
+
+## Technology Stack
+
+- **.NET 9.0** with C# 13
+- **ASP.NET Core** with OpenAPI/Swagger
+- **System.Device.Gpio** and **Iot.Device.Bindings** for hardware control
+- **xUnit** with **FluentAssertions** for testing
+- **Nullable reference types** enabled
+
+## Git Commit Guidelines
+
+- **Commit titles**: Maximum 72 characters
+- **Commit body**: Use second `-m` parameter for detailed descriptions
+- **Format**: `git commit -m "Short title" -m "Detailed body with bullet points"`
+- **Branch creation**: When on master branch and asked to commit, create a new branch first
+- **Branch naming**: Use lowercase with hyphens (e.g., `feature/rename-mapinfo`, `fix/nullable-warnings`)
 
 ## Architecture Overview
 
